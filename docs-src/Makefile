@@ -1,6 +1,12 @@
 EXPORT_ALL_VARIABLES:
 
-L0_VERSION=$(shell git describe --tags)
+SHELL=/bin/bash
+
+check-environment:
+	@if [[ ! $$L0_VERSION ]] ; then \
+		echo "Layer0 version not set! [ export L0_VERSION=\"vX.Y.Z\" ]" ; \
+		exit 1 ; \
+	fi
 
 deps:
 	pip install mkdocs
@@ -10,7 +16,7 @@ deps:
 
 release: template build
 
-template:
+template: check-environment
 	$(shell sed -E -i "s/(v[0-9]+.[0-9]+.[0-9]+)/$${L0_VERSION}/g" ../README.md)
 	expenv -f templates/index.md.template > docs/index.md
 	cat templates/release-table-header.template > docs/releases.md
@@ -25,4 +31,4 @@ build:
 serve:
 	mkdocs serve -a 0.0.0.0:9090
 
-.PHONY: deps release template build serve
+.PHONY: deps check-environment release template build serve
