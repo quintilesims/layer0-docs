@@ -1,3 +1,8 @@
+# ![logo](https://quintilesims.github.io/layer0-docs/static/logo_rs.png)
+
+[![Layer0](https://img.shields.io/badge/Layer0-latest-brightgreen.svg)](https://github.com/quintilesims/layer0/releases/latest)
+
+
 # Layer0 Docs
 
 This repository contains the source and built documentation for [Layer0](http://github.com/quintilesims/layer0).
