@@ -117,17 +117,17 @@ These files can be downloaded at any time using the `pull` command (`l0-setup pu
 !!! info "Using a Private Docker Registry"
     **The procedures in this section are optional, but are highly recommended for production use.**
 
-If you require authentication to a private Docker registry, you will need a Docker configuration file present on your machine with access to private repositories (typically located at `~/.docker/config.json`). 
+If you require authentication to a private Docker registry, you will need a Docker configuration file present on your machine with access to private repositories (typically located at `$HOME/.docker/config.json`). 
 
 If you don't have a config file yet, you can generate one by running `docker login [registry-address]`. 
-A configuration file will be generated at `~/.docker/config.json`.
+A configuration file will be generated at `$HOME/.docker/config.json`.
 
 To add this authentication to your Layer0 instance, run:
 ```
 l0-setup init --docker-path=<path/to/config.json> <instance_name>
 ```
 
-This will reconfigure your Layer0 configuration and add a rendered file into your Layer0 instance's directory at `~/.layer0/<instance_name>/dockercfg.json`.
+This will reconfigure your Layer0 configuration and add a rendered file into your Layer0 instance's directory at `$HOME/.layer0/<instance_name>/dockercfg.json`.
 
 You can modify a Layer0 instance's `dockercfg.json` file and re-run the `apply` command (`l0-setup apply <instance_name>`) to make changes to your authentication. 
 **Note:** Any EC2 instances created prior to changing your `dockercfg.json` file will need to be manually terminated since they only grab the authentication file during instance creation. 

@@ -869,15 +869,15 @@ These files can be downloaded at any time using the <code>pull</code> command (<
 <p class="admonition-title">Using a Private Docker Registry</p>
 <p><strong>The procedures in this section are optional, but are highly recommended for production use.</strong></p>
 </div>
-<p>If you require authentication to a private Docker registry, you will need a Docker configuration file present on your machine with access to private repositories (typically located at <code>~/.docker/config.json</code>). </p>
+<p>If you require authentication to a private Docker registry, you will need a Docker configuration file present on your machine with access to private repositories (typically located at <code>$HOME/.docker/config.json</code>). </p>
 <p>If you don't have a config file yet, you can generate one by running <code>docker login [registry-address]</code>. 
-A configuration file will be generated at <code>~/.docker/config.json</code>.</p>
+A configuration file will be generated at <code>$HOME/.docker/config.json</code>.</p>
 <p>To add this authentication to your Layer0 instance, run:</p>
 <div class="codehilite"><pre><span></span>l0-setup init --docker-path=&lt;path/to/config.json&gt; &lt;instance_name&gt;
 </pre></div>
 
 
-<p>This will reconfigure your Layer0 configuration and add a rendered file into your Layer0 instance's directory at <code>~/.layer0/&lt;instance_name&gt;/dockercfg.json</code>.</p>
+<p>This will reconfigure your Layer0 configuration and add a rendered file into your Layer0 instance's directory at <code>$HOME/.layer0/&lt;instance_name&gt;/dockercfg.json</code>.</p>
 <p>You can modify a Layer0 instance's <code>dockercfg.json</code> file and re-run the <code>apply</code> command (<code>l0-setup apply &lt;instance_name&gt;</code>) to make changes to your authentication. 
 <strong>Note:</strong> Any EC2 instances created prior to changing your <code>dockercfg.json</code> file will need to be manually terminated since they only grab the authentication file during instance creation. 
 Terminated EC2 instances will be automatically re-created by autoscaling.</p>
