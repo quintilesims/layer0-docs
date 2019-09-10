@@ -56,7 +56,7 @@ The following arguments are supported:
 
 ---
 
-##API Data Source
+## API Data Source
 The API data source is used to extract useful read-only variables from the Layer0 API.
 
 ### Example Usage
@@ -355,6 +355,7 @@ resource "layer0_load_balancer" "guestbook" {
   }
 
   idle_timeout = 300
+  cross_zone   = false
 }
 ```
 
@@ -367,7 +368,8 @@ The following arguments are supported:
 * `private` - (Optional) If true, the load balancer will not be exposed to the public internet
 * `port` - (Optional, Default: 80:80/tcp) A list of port blocks. Ports documented below
 * `health_check` - (Optional, Default: `{"TCP:80" 30 5 2 2}`) A health_check block. Health check documented below
-* `idle_timeout` - (Optiona, Default: 60) The idle timeout of the load balancer in seconds
+* `idle_timeout` - (Optional, Default: 60) The idle timeout of the load balancer in seconds
+* `cross_zone` - (Optional, Default: `true`) A boolean for whether or not to enable cross-zone load balancing
 
 Ports (`port`) support the following:
 

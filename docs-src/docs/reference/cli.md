@@ -384,7 +384,8 @@ Use the `create` subcommand to create a new load balancer.
 l0 loadbalancer create [--port port ... | --certificate nameOrARN | 
     --private | --healthcheck-target target | --healthcheck-interval interval | 
     --healthcheck-timeout timeout | --healthcheck-healthy-threshold healthyThreshold | 
-    --healthcheck-unhealthy-threshold unhealthyThreshold | --idle-timeout idleTimeout] environmentName loadBalancerName
+    --healthcheck-unhealthy-threshold unhealthyThreshold | --idle-timeout idleTimeout | 
+    --disable-cross-zone] environmentName loadBalancerName
 ```
 
 #### Required parameters
@@ -406,6 +407,7 @@ l0 loadbalancer create [--port port ... | --certificate nameOrARN |
 * `--healthcheck-healthy-threshold healthyThreshold` - The number of checks before the instance is declared healthy (default: `2`).
 * `--healthcheck-unhealthy-threshold unhealthyThreshold` - The number of checks before the instance is declared unhealthy (default: `2`).
 * `--idle-timeout idleTimeout` - The idle timeout in seconds.
+* `--disable-cross-zone` - When you pass this flag, cross-zone load balancing for the load balancer will be disabled (by default, cross-zone load balancing is enabled).
 
 !!! info "Ports and Health Checks"
     When both the `--port` and the `--healthcheck-target` options are omitted, Layer0 configures the load balancer with some default values: `80:80/TCP` for ports and `TCP:80` for healthcheck target.
@@ -526,6 +528,29 @@ l0 loadbalancer idletimeout loadbalancerName idleTimeout
 #### Required parameters
 * `loadBalancerName` - The name of the existing Layer0 load balancer you are modifying.
 * `idleTimeout` - The idle timeout in seconds.
+
+### loadbalancer cross-zone
+Use the `cross-zone` subcommand to **view** or **update** the cross-zone setting of a load balancer.
+
+Cross-zone load balancing enables a load balancer to route traffic to any of its registered instances, even if those instances are in different availability zones.
+Disabling cross-zone load balancing will restrict the load balancer to only the registered instances which are within the same availability zone as the load balancer.
+See the following documentation for more information: <https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html>
+
+#### Usage
+```
+l0 loadbalancer cross-zone loadBalancerName [--enable | --disable]
+```
+
+#### Required parameters
+* `loadBalancerName` - The name of the existing Layer0 load balancer you are modifying.
+
+#### Optional parameters
+* `--enable` - Enable cross-zone load balancing for the load balancer.
+* `--disable` - Disable cross-zone load balancing for the load balancer.
+
+!!! info "Exclusive Flags"
+    You should only ever specify one of `--enable` or `--disable`.
+    Passing both flags to the `cross-zone` subcommand will return an error.
 
 ---
 
