@@ -1676,6 +1676,7 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook&quot; {
   }
 
   idle_timeout = 300
+  cross_zone   = false
 }
 </pre></div>
 
@@ -1688,7 +1689,8 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook&quot; {
 <li><code>private</code> - (Optional) If true, the load balancer will not be exposed to the public internet</li>
 <li><code>port</code> - (Optional, Default: 80:80/tcp) A list of port blocks. Ports documented below</li>
 <li><code>health_check</code> - (Optional, Default: <code>{"TCP:80" 30 5 2 2}</code>) A health_check block. Health check documented below</li>
-<li><code>idle_timeout</code> - (Optiona, Default: 60) The idle timeout of the load balancer in seconds</li>
+<li><code>idle_timeout</code> - (Optional, Default: 60) The idle timeout of the load balancer in seconds</li>
+<li><code>cross_zone</code> - (Optional, Default: <code>true</code>) A boolean for whether or not to enable cross-zone load balancing</li>
 </ul>
 <p>Ports (<code>port</code>) support the following:</p>
 <ul>
