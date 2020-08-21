@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -644,24 +644,24 @@ It is <strong>not</strong> recommended for production environments.</p>
 <ol>
 <li>In a console window, add port 2222:22/tcp to your Service's load balancer:</li>
 </ol>
-<div class="codehilite"><pre><span></span>l0 loadbalancer addport &lt;name&gt; 2222:22/tcp
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer addport &lt;name&gt; 2222:22/tcp</span>
+</code></pre></div>
 
 
 <ol start="2">
   <li>SSH into your Service by supplying the load balancer url and key pair file name.</li>
 </ol>
 
-<div class="codehilite"><pre><span></span>ssh -i &lt;key pair path and file name&gt; ec2-user@&lt;load balancer url&gt; -p 2222
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">ssh -i &lt;key pair path and file name&gt; ec2-user@&lt;load balancer url&gt; -p 2222</span>
+</code></pre></div>
 
 
 <ol start="3">
   <li>If required, Use Docker to access a specific container with Bash.</li>
 </ol>
 
-<div class="codehilite"><pre><span></span>docker exec -it &lt;container id&gt; /bin/bash
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">docker exec -it &lt;container id&gt; /bin/bash</span>
+</code></pre></div>
 
 
 <h2 id="remarks">Remarks<a class="headerlink" href="#remarks" title="Permanent link">#</a></h2>
@@ -728,7 +728,7 @@ It is <strong>not</strong> recommended for production environments.</p>
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     

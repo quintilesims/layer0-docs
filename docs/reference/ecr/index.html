@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -819,47 +819,47 @@
 <p>When interacting with ECR, you will first need to create a repository and a login to interact from your development machine.</p>
 <h3 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link">#</a></h3>
 <p>Each repository needs to be created by an AWS api call.</p>
-<div class="codehilite"><pre><span></span>  &gt; aws ecr create-repository --repository-name myteam/myproject
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  &gt; aws ecr create-repository --repository-name myteam/myproject</span>
+</code></pre></div>
 
 
 <h3 id="login">Login<a class="headerlink" href="#login" title="Permanent link">#</a></h3>
 <p>To authenticate with the ECR service, Amazon provides the <code>get-login</code> command, which generates an authentication token, and returns a docker command to set it up</p>
-<div class="codehilite"><pre><span></span>  &gt; aws ecr get-login
-  # this command will return the following: (password is typically hundreds of characters)
-  docker login -u AWS -p password -e none https://aws_account_id.dkr.ecr.us-east-1.amazonaws.com
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  &gt; aws ecr get-login</span>
+<span class="err">  # this command will return the following: (password is typically hundreds of characters)</span>
+<span class="err">  docker login -u AWS -p password -e none https://aws_account_id.dkr.ecr.us-east-1.amazonaws.com</span>
+</code></pre></div>
 
 
 <p>Execute the provided docker command to store the login credentials</p>
 <p>Afterward creating the repository and local login credentials you may interact with images (and tags) under this path from a local docker client.</p>
-<div class="codehilite"><pre><span></span>  docker pull <span class="cp">${</span><span class="n">ecr</span><span class="o">-</span><span class="n">url</span><span class="cp">}</span>/myteam/myproject
+<div class="codehilite"><pre><span></span><code>  docker pull <span class="cp">${</span><span class="n">ecr</span><span class="o">-</span><span class="n">url</span><span class="cp">}</span>/myteam/myproject
   docker push <span class="cp">${</span><span class="n">ecr</span><span class="o">-</span><span class="n">url</span><span class="cp">}</span>/myteam/myproject:custom-tag-1
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="deploy-example">Deploy Example<a class="headerlink" href="#deploy-example" title="Permanent link">#</a></h2>
 <p>Here we'll walk through using ECR when deploying to Layer0,  Using a very basic wait container.</p>
 <h3 id="make-docker-image">Make docker image<a class="headerlink" href="#make-docker-image" title="Permanent link">#</a></h3>
 <p>Your docker image can be built locally or pulled from dockerhub.  For this example, we made a service that waits and then exits (useful for triggering regular restarts).</p>
-<div class="codehilite"><pre><span></span>FROM busybox
+<div class="codehilite"><pre><span></span><code><span class="k">FROM</span> <span class="n">busybox</span>
 
-ENV SLEEP_TIME=60
+<span class="n">ENV</span> <span class="n">SLEEP_TIME</span><span class="o">=</span><span class="mi">60</span>
 
-CMD sleep $SLEEP_TIME
-</pre></div>
+<span class="n">CMD</span> <span class="n">sleep</span> <span class="err">$</span><span class="n">SLEEP_TIME</span>
+</code></pre></div>
 
 
 <p>Then build the file, with the tag <code>xfra/wait</code></p>
-<div class="codehilite"><pre><span></span> &gt; docker build -f Dockerfile.wait -t xfra/wait .
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err"> &gt; docker build -f Dockerfile.wait -t xfra/wait .</span>
+</code></pre></div>
 
 
 <h3 id="upload-to-ecr">Upload to ECR<a class="headerlink" href="#upload-to-ecr" title="Permanent link">#</a></h3>
 <p>After preparing a login and registry, tag the image with the remote url, and use <code>docker push</code></p>
-<div class="codehilite"><pre><span></span>  docker tag xfra/wait 111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait
-  docker push 111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  docker tag xfra/wait 111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait</span>
+<span class="err">  docker push 111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -867,31 +867,31 @@ CMD sleep $SLEEP_TIME
 </div>
 <h3 id="create-a-deploy">Create a deploy<a class="headerlink" href="#create-a-deploy" title="Permanent link">#</a></h3>
 <p>To run this image in Layer0, we create a dockerrun file, describing the instance and any additional variables</p>
-<div class="codehilite"><pre><span></span>{
-  &quot;containerDefinitions&quot;: [
-    {
-      &quot;name&quot;: &quot;timeout&quot;,
-      &quot;image&quot;: &quot;111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait:latest&quot;,
-      &quot;essential&quot;: true,
-      &quot;memory&quot;: 10,
-      &quot;environment&quot;: [
-        { &quot;name&quot;: &quot;SLEEP_TIME&quot;, &quot;value&quot;: &quot;43200&quot; }
-      ]
-    }
-  ]
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">  &quot;containerDefinitions&quot;: [</span>
+<span class="err">    {</span>
+<span class="err">      &quot;name&quot;: &quot;timeout&quot;,</span>
+<span class="err">      &quot;image&quot;: &quot;111222333444.dkr.ecr.us-east-1.amazonaws.com/xfra-wait:latest&quot;,</span>
+<span class="err">      &quot;essential&quot;: true,</span>
+<span class="err">      &quot;memory&quot;: 10,</span>
+<span class="err">      &quot;environment&quot;: [</span>
+<span class="err">        { &quot;name&quot;: &quot;SLEEP_TIME&quot;, &quot;value&quot;: &quot;43200&quot; }</span>
+<span class="err">      ]</span>
+<span class="err">    }</span>
+<span class="err">  ]</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <p>And create that in Layer0</p>
-<div class="codehilite"><pre><span></span>  l0 deploy create timeout.dockerrun.aws.json timeout
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  l0 deploy create timeout.dockerrun.aws.json timeout</span>
+</code></pre></div>
 
 
 <h3 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">#</a></h3>
 <p>Finally, run that deploy as a service or a task. (the service will restart every 12 hours)</p>
-<div class="codehilite"><pre><span></span>  l0 service create demo timeoutsvc timeout:latest
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  l0 service create demo timeoutsvc timeout:latest</span>
+</code></pre></div>
 
 
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
@@ -973,7 +973,7 @@ CMD sleep $SLEEP_TIME
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     

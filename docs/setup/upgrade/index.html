@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -641,30 +641,30 @@ This assumes you are using Layer0 version <code>v0.10.0</code> or later. </p>
 Users will either need to create a new Layer0 instance and migrate to it or destroy and re-create their Layer0 instance in these circumstances.</p>
 </div>
 <p>Run the <code>upgrade</code> command, replacing <code>&lt;instance_name&gt;</code> and <code>&lt;version&gt;</code> with the name of the Layer0 instance and new version, respectively:</p>
-<div class="codehilite"><pre><span></span>l0-setup upgrade &lt;instance_name&gt; &lt;version&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0-setup upgrade &lt;instance_name&gt; &lt;version&gt;</span>
+</code></pre></div>
 
 
 <p>This will prompt you about the updated <code>source</code> and <code>version</code> inputs changing. 
 If you are not satisfied with the changes, exit the application during the prompts. 
 For full control on changing inputs, use the <a href="../../reference/setup-cli#set">set</a> command. </p>
 <p><strong>Example Usage</strong></p>
-<div class="codehilite"><pre><span></span>l0-setup upgrade mylayer0 v0.10.1
+<div class="codehilite"><pre><span></span><code><span class="n">l0</span><span class="o">-</span><span class="n">setup</span> <span class="n">upgrade</span> <span class="n">mylayer0</span> <span class="n">v0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span>
 
-This will update the &#39;version&#39; input
-        From: [v0.10.0]
-        To:   [v0.10.1]
+<span class="n">This</span> <span class="n">will</span> <span class="k">update</span> <span class="n">the</span> <span class="s1">&#39;version&#39;</span> <span class="k">input</span>
+        <span class="k">From</span><span class="p">:</span> <span class="p">[</span><span class="n">v0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">To</span><span class="p">:</span>   <span class="p">[</span><span class="n">v0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span><span class="p">]</span>
 
-        Press &#39;enter&#39; to accept this change:
-This will update the &#39;source&#39; input
-        From: [github.com/quintilesims/layer0//setup/module?ref=v0.10.0]
-        To:   [github.com/quintilesims/layer0//setup/module?ref=v0.10.1]
+        <span class="n">Press</span> <span class="s1">&#39;enter&#39;</span> <span class="k">to</span> <span class="n">accept</span> <span class="n">this</span> <span class="n">change</span><span class="p">:</span>
+<span class="n">This</span> <span class="n">will</span> <span class="k">update</span> <span class="n">the</span> <span class="s1">&#39;source&#39;</span> <span class="k">input</span>
+        <span class="k">From</span><span class="p">:</span> <span class="p">[</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">quintilesims</span><span class="o">/</span><span class="n">layer0</span><span class="o">//</span><span class="n">setup</span><span class="o">/</span><span class="n">module</span><span class="o">?</span><span class="k">ref</span><span class="o">=</span><span class="n">v0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">To</span><span class="p">:</span>   <span class="p">[</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">quintilesims</span><span class="o">/</span><span class="n">layer0</span><span class="o">//</span><span class="n">setup</span><span class="o">/</span><span class="n">module</span><span class="o">?</span><span class="k">ref</span><span class="o">=</span><span class="n">v0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span><span class="p">]</span>
 
-        Press &#39;enter&#39; to accept this change:
-        ...
+        <span class="n">Press</span> <span class="s1">&#39;enter&#39;</span> <span class="k">to</span> <span class="n">accept</span> <span class="n">this</span> <span class="n">change</span><span class="p">:</span>
+        <span class="p">...</span>
 
-Everything looks good! You are now ready to run &#39;l0-setup apply mylayer0&#39;
-</pre></div>
+<span class="n">Everything</span> <span class="n">looks</span> <span class="n">good</span><span class="o">!</span> <span class="n">You</span> <span class="k">are</span> <span class="n">now</span> <span class="n">ready</span> <span class="k">to</span> <span class="n">run</span> <span class="s1">&#39;l0-setup apply mylayer0&#39;</span>
+</code></pre></div>
 
 
 <p>As stated by the command output, run the <a href="../../reference/setup-cli#apply">apply</a> command to apply the changes to the Layer0 instance.
@@ -742,7 +742,7 @@ If any errors occur, please contact the Layer0 team. </p>
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     

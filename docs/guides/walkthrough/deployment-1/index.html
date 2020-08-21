@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -941,36 +941,36 @@ Here, we'll create a new environment named <strong>demo-env</strong>.
 At the command prompt, execute the following:</p>
 <p><code>l0 environment create demo-env</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS
-demoenvd4e17    demo-env          linux  0              m3.medium
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS</span>
+<span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
+</code></pre></div>
 
 
 <p>We can inspect our environments in a couple of different ways:</p>
 <ul>
 <li><code>l0 environment list</code> will give us a brief summary of all environments:</li>
 </ul>
-<div class="codehilite"><pre><span></span>ENVIRONMENT ID  ENVIRONMENT NAME  OS
-api             api               linux
-demoenvd4e17    demo-env          linux
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">ENVIRONMENT ID  ENVIRONMENT NAME  OS</span>
+<span class="err">api             api               linux</span>
+<span class="err">demoenvd4e17    demo-env          linux</span>
+</code></pre></div>
 
 
 <ul>
 <li><code>l0 environment get demo-env</code> will show us more information about the <strong>demo-env</strong> environment we just created:</li>
 </ul>
-<div class="codehilite"><pre><span></span>ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS
-demoenvd4e17    demo-env          linux  0              m3.medium
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS</span>
+<span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
+</code></pre></div>
 
 
 <ul>
 <li><code>l0 environment get \*</code> illustrates wildcard matching (you could also have used <code>demo*</code> in the above command), and it will return detailed information for <em>each</em> environment, not just one - it's like a detailed <code>list</code>:</li>
 </ul>
-<div class="codehilite"><pre><span></span>ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS
-api             api               linux  2              t2.small
-demoenvd4e17    demo-env          linux  0              m3.medium
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS</span>
+<span class="err">api             api               linux  2              t2.small</span>
+<span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
+</code></pre></div>
 
 
 <hr />
@@ -986,9 +986,9 @@ Since the port configuration is already aligned with the default health check, w
 At the command prompt, execute the following:</p>
 <p><code>l0 loadbalancer create --port 80:80/http demo-env guestbook-lb</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE  PORTS       PUBLIC  URL  IDLE TIMEOUT
-guestboc8d07     guestbook-lb       demo-env              80:80/HTTP  true         60
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE  PORTS       PUBLIC  URL  IDLE TIMEOUT</span>
+<span class="err">guestboc8d07     guestbook-lb       demo-env              80:80/HTTP  true         60</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above command:</p>
@@ -1019,9 +1019,9 @@ A deploy, once created, can be applied to multiple services - even across differ
 At the command prompt, execute the following:</p>
 <p><code>l0 deploy create Guestbook.Dockerrun.aws.json guestbook-dpl</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>DEPLOY ID        DEPLOY NAME    VERSION
-guestbook-dpl.1  guestbook-dpl  1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DEPLOY ID        DEPLOY NAME    VERSION</span>
+<span class="err">guestbook-dpl.1  guestbook-dpl  1</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above command:</p>
@@ -1051,9 +1051,9 @@ The service will execute the Docker containers which have been described in the 
 <p>Here, we'll create a new service called <strong>guestbook-svc</strong>. At the command prompt, execute the following:</p>
 <p><code>l0 service create --loadbalancer demo-env:guestbook-lb demo-env guestbook-svc guestbook-dpl:latest</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above command:</p>
@@ -1075,21 +1075,21 @@ At the command prompt, execute the following:</p>
 <p><code>l0 service get demo-env:guestbook-svc</code></p>
 <p>If we're quick enough, we'll be able to see the first stage of the process (this is what was output after running the <code>service create</code> command up in Part 4).
 We should see an asterisk (*) next to the name of the <strong>guestbook-dpl:1</strong> deploy, which indicates that the service is in a transitional state:</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1</span>
+</code></pre></div>
 
 
 <p>In the next phase of deployment, if we execute the <code>service get</code> command again, we will see <strong>(1)</strong> in the <strong>Scale</strong> column; this indicates that 1 copy of the service is transitioning to an active state:</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1 (1)
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1 (1)</span>
+</code></pre></div>
 
 
 <p>In the final phase of deployment, we will see <strong>1/1</strong> in the <strong>Scale</strong> column; this indicates that the service is running 1 copy:</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1   1/1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1   1/1</span>
+</code></pre></div>
 
 
 <hr />
@@ -1098,9 +1098,9 @@ guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1   1/1
 <p>At the command prompt, execute the following:</p>
 <p><code>l0 loadbalancer get demo-env:guestbook-lb</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE        PORTS       PUBLIC  URL    IDLE  TIMEOUT
-guestboc8d07     guestbook-lb       demo-env     guestbook-svc  80:80/HTTP  true    &lt;url&gt;  60
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE        PORTS       PUBLIC  URL    IDLE  TIMEOUT</span>
+<span class="err">guestboc8d07     guestbook-lb       demo-env     guestbook-svc  80:80/HTTP  true    &lt;url&gt;  60</span>
+</code></pre></div>
 
 
 <p>Copy the value shown in the <strong>URL</strong> column and paste it into a web browser.
@@ -1109,11 +1109,11 @@ The guestbook application will appear (once the service has completely finished 
 <h3 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">#</a></h3>
 <p>Output from a Service's docker containers may be acquired by running the following command:</p>
 <p><code>l0 service logs &lt;SERVICE&gt;</code></p>
-<div class="codehilite"><pre><span></span><span class="gh">guestbook</span>
+<div class="codehilite"><pre><span></span><code><span class="gh">guestbook</span>
 <span class="gh">---------</span>
 2018/11/05 19:11:46 Using memory backend
 2018/11/05 19:11:46 Listening on :80
-</pre></div>
+</code></pre></div>
 
 
 <hr />
@@ -1168,41 +1168,41 @@ If you've followed along with the Layer0 CLI deployment above, it should be fair
 When we began the CLI deployment, our first step was to create an environment:</p>
 <p><code>l0 environment create demo-env</code></p>
 <p>This command is recreated in <code>main.tf</code> like so:</p>
-<div class="codehilite"><pre><span></span># walkthrough/deployment-1/main.tf
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="n">walkthrough</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">main</span><span class="p">.</span><span class="n">tf</span>
 
-resource &quot;layer0_environment&quot; &quot;demo-env&quot; {
-    name = &quot;demo-env&quot;
-}
-</pre></div>
+<span class="n">resource</span> <span class="ss">&quot;layer0_environment&quot;</span> <span class="ss">&quot;demo-env&quot;</span> <span class="err">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;demo-env&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <p>We've bundled up the heart of the Guestbook deployment (load balancer, deploy, service, etc.) into a <a href="https://www.terraform.io/docs/modules/usage.html">Terraform module</a>.
 To use it, we declare a <code>module</code> block and pass in the source of the module as well as any configuration or variables that the module needs.</p>
-<div class="codehilite"><pre><span></span># walkthrough/deployment-1/main.tf
+<div class="codehilite"><pre><span></span><code># walkthrough/deployment-1/main.tf
 
 module &quot;guestbook&quot; {
     source         = &quot;github.com/quintilesims/guides//guestbook/module&quot;
     environment_id = &quot;<span class="cp">${</span><span class="n">layer0_environment</span><span class="o">.</span><span class="n">demo</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <p>You can see that we pass in the ID of the environment we create.
 All variables declared in this block are passed to the module, so the next file we should look at is <code>variables.tf</code> inside of the module to get an idea of what the module is expecting.</p>
 <p>There are a lot of variables here, but only one of them doesn't have a default value.</p>
-<div class="codehilite"><pre><span></span># guestbook/module/variables.tf
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="n">guestbook</span><span class="o">/</span><span class="n">module</span><span class="o">/</span><span class="n">variables</span><span class="p">.</span><span class="n">tf</span>
 
-variable &quot;environment_id&quot; {
-    description = &quot;id of the layer0 environment in which to create resources&quot;
-}
-</pre></div>
+<span class="k">variable</span> <span class="ss">&quot;environment_id&quot;</span> <span class="err">{</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="ss">&quot;id of the layer0 environment in which to create resources&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <p>You'll notice that this is the variable that we're passing in.
 For this particular deployment of the Guestbook, all of the default options are fine.
 We could override any of them if we wanted to, just by specifying a new value for them back in <code>deployment-1/main.tf</code>.</p>
 <p>Now that we've seen the variables that the module will have, let's take a look at part of <code>module/main.tf</code> and see how some of them might be used:</p>
-<div class="codehilite"><pre><span></span># guestbook/module/main.tf
+<div class="codehilite"><pre><span></span><code># guestbook/module/main.tf
 
 resource &quot;layer0_load_balancer&quot; &quot;guestbook-lb&quot; {
     name = &quot;<span class="cp">${</span><span class="n">var</span><span class="o">.</span><span class="n">load_balancer_name</span><span class="cp">}</span>&quot;
@@ -1215,7 +1215,7 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook-lb&quot; {
 }
 
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p>You can follow <a href="/reference/terraform-plugin/">this link</a> to learn more about Layer0 resources in Terraform.</p>
@@ -1226,46 +1226,46 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook-lb&quot; {
 At the command prompt, execute the following command:</p>
 <p><code>terraform init</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>Initializing modules...
-- module.guestbook
-  Getting source &quot;github.com/quintilesims/guides//guestbook/module&quot;
+<div class="codehilite"><pre><span></span><code><span class="n">Initializing</span> <span class="n">modules</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">module</span><span class="p">.</span><span class="n">guestbook</span>
+  <span class="n">Getting</span> <span class="k">source</span> <span class="ss">&quot;github.com/quintilesims/guides//guestbook/module&quot;</span>
 
-Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider &quot;template&quot; (1.0.0)...
+<span class="n">Initializing</span> <span class="n">provider</span> <span class="n">plugins</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">Checking</span> <span class="k">for</span> <span class="n">available</span> <span class="n">provider</span> <span class="n">plugins</span> <span class="k">on</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">releases</span><span class="p">.</span><span class="n">hashicorp</span><span class="p">.</span><span class="n">com</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">Downloading</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">provider</span> <span class="ss">&quot;template&quot;</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">)...</span>
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
+<span class="n">The</span> <span class="n">following</span> <span class="n">providers</span> <span class="k">do</span> <span class="k">not</span> <span class="n">have</span> <span class="k">any</span> <span class="k">version</span> <span class="k">constraints</span> <span class="k">in</span> <span class="n">configuration</span><span class="p">,</span>
+<span class="n">so</span> <span class="n">the</span> <span class="n">latest</span> <span class="k">version</span> <span class="n">was</span> <span class="n">installed</span><span class="p">.</span>
 
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &quot;...&quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
+<span class="k">To</span> <span class="n">prevent</span> <span class="n">automatic</span> <span class="n">upgrades</span> <span class="k">to</span> <span class="k">new</span> <span class="n">major</span> <span class="k">versions</span> <span class="n">that</span> <span class="n">may</span> <span class="n">contain</span> <span class="n">breaking</span>
+<span class="n">changes</span><span class="p">,</span> <span class="n">it</span> <span class="k">is</span> <span class="n">recommended</span> <span class="k">to</span> <span class="k">add</span> <span class="k">version</span> <span class="o">=</span> <span class="ss">&quot;...&quot;</span> <span class="k">constraints</span> <span class="k">to</span> <span class="n">the</span>
+<span class="n">corresponding</span> <span class="n">provider</span> <span class="n">blocks</span> <span class="k">in</span> <span class="n">configuration</span><span class="p">,</span> <span class="k">with</span> <span class="n">the</span> <span class="k">constraint</span> <span class="n">strings</span>
+<span class="n">suggested</span> <span class="n">below</span><span class="p">.</span>
 
-* provider.template: version = &quot;~&gt; 1.0&quot;
+<span class="o">*</span> <span class="n">provider</span><span class="p">.</span><span class="k">template</span><span class="p">:</span> <span class="k">version</span> <span class="o">=</span> <span class="ss">&quot;~&gt; 1.0&quot;</span>
 
-Terraform has been successfully initialized!
+<span class="n">Terraform</span> <span class="n">has</span> <span class="n">been</span> <span class="n">successfully</span> <span class="n">initialized</span><span class="o">!</span>
 
-You may now begin working with Terraform. Try running &quot;terraform plan&quot; to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
+<span class="n">You</span> <span class="n">may</span> <span class="n">now</span> <span class="k">begin</span> <span class="n">working</span> <span class="k">with</span> <span class="n">Terraform</span><span class="p">.</span> <span class="n">Try</span> <span class="n">running</span> <span class="ss">&quot;terraform plan&quot;</span> <span class="k">to</span> <span class="n">see</span>
+<span class="k">any</span> <span class="n">changes</span> <span class="n">that</span> <span class="k">are</span> <span class="n">required</span> <span class="k">for</span> <span class="n">your</span> <span class="n">infrastructure</span><span class="p">.</span> <span class="k">All</span> <span class="n">Terraform</span> <span class="n">commands</span>
+<span class="n">should</span> <span class="n">now</span> <span class="k">work</span><span class="p">.</span>
 
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-</pre></div>
+<span class="k">If</span> <span class="n">you</span> <span class="n">ever</span> <span class="k">set</span> <span class="k">or</span> <span class="n">change</span> <span class="n">modules</span> <span class="k">or</span> <span class="n">backend</span> <span class="n">configuration</span> <span class="k">for</span> <span class="n">Terraform</span><span class="p">,</span>
+<span class="n">rerun</span> <span class="n">this</span> <span class="n">command</span> <span class="k">to</span> <span class="n">reinitialize</span> <span class="n">your</span> <span class="n">working</span> <span class="n">directory</span><span class="p">.</span> <span class="k">If</span> <span class="n">you</span> <span class="n">forget</span><span class="p">,</span> <span class="n">other</span>
+<span class="n">commands</span> <span class="n">will</span> <span class="n">detect</span> <span class="n">it</span> <span class="k">and</span> <span class="n">remind</span> <span class="n">you</span> <span class="k">to</span> <span class="k">do</span> <span class="n">so</span> <span class="k">if</span> <span class="n">necessary</span><span class="p">.</span>
+</code></pre></div>
 
 
 <hr />
 <h3 id="part-2-terraform-plan">Part 2: Terraform Plan<a class="headerlink" href="#part-2-terraform-plan" title="Permanent link">#</a></h3>
 <p>Before we actually create/update/delete any resources, it's a good idea to find out what Terraform intends to do.</p>
 <p>Run <code>terraform plan</code>. Terraform will prompt you for configuration values that it does not have:</p>
-<div class="codehilite"><pre><span></span>var.endpoint
-    Enter a value:
+<div class="codehilite"><pre><span></span><code><span class="n">var</span><span class="p">.</span><span class="n">endpoint</span>
+    <span class="n">Enter</span> <span class="n">a</span> <span class="n">value</span><span class="p">:</span>
 
-var.token
-    Enter a value:
-</pre></div>
+<span class="n">var</span><span class="p">.</span><span class="n">token</span>
+    <span class="n">Enter</span> <span class="n">a</span> <span class="n">value</span><span class="p">:</span>
+</code></pre></div>
 
 
 <p>You can find these values by running <code>l0-setup endpoint &lt;your layer0 prefix&gt;</code>.</p>
@@ -1274,7 +1274,7 @@ var.token
 <p>There are a few ways to configure Terraform so that you don't have to keep entering these values every time you run a Terraform command (editing the <code>terraform.tfvars</code> file, or exporting environment variables like <code>TF_VAR_endpoint</code> and <code>TF_VAR_token</code>, for example). See the <a href="https://www.terraform.io/docs/configuration/variables.html">Terraform Docs</a> for more.</p>
 </div>
 <p>The <code>plan</code> command should give us output like the following:</p>
-<div class="codehilite"><pre><span></span>Refreshing Terraform state in-memory prior to plan...
+<div class="codehilite"><pre><span></span><code>Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
 
@@ -1330,7 +1330,7 @@ Terraform will perform the following actions:
 
 
 Plan: 4 to add, 0 to change, 0 to destroy.
-</pre></div>
+</code></pre></div>
 
 
 <p>This shows you that Terraform intends to create a deploy, an environment, a load balancer, and a service, all through Layer0.</p>
@@ -1340,25 +1340,25 @@ Plan: 4 to add, 0 to change, 0 to destroy.
 <h3 id="part-3-terraform-apply">Part 3: Terraform Apply<a class="headerlink" href="#part-3-terraform-apply" title="Permanent link">#</a></h3>
 <p>Run <code>terraform apply</code> to begin the process.</p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>layer0_environment.demo: Refreshing state...
-...
-...
-...
-layer0_service.guestbook: Creation complete
+<div class="codehilite"><pre><span></span><code><span class="n">layer0_environment</span><span class="p">.</span><span class="n">demo</span><span class="p">:</span> <span class="n">Refreshing</span> <span class="k">state</span><span class="p">...</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="n">layer0_service</span><span class="p">.</span><span class="n">guestbook</span><span class="p">:</span> <span class="n">Creation</span> <span class="n">complete</span>
 
-Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+<span class="n">Apply</span> <span class="n">complete</span><span class="o">!</span> <span class="n">Resources</span><span class="p">:</span> <span class="mi">7</span> <span class="n">added</span><span class="p">,</span> <span class="mi">0</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">destroyed</span><span class="p">.</span>
 
-The state of your infrastructure has been saved to the path
-below. This state is required to modify and destroy your
-infrastructure, so keep it safe. To inspect the complete state
-use the `terraform show` command.
+<span class="n">The</span> <span class="k">state</span> <span class="k">of</span> <span class="n">your</span> <span class="n">infrastructure</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">to</span> <span class="n">the</span> <span class="n">path</span>
+<span class="n">below</span><span class="p">.</span> <span class="n">This</span> <span class="k">state</span> <span class="k">is</span> <span class="n">required</span> <span class="k">to</span> <span class="k">modify</span> <span class="k">and</span> <span class="k">destroy</span> <span class="n">your</span>
+<span class="n">infrastructure</span><span class="p">,</span> <span class="n">so</span> <span class="n">keep</span> <span class="n">it</span> <span class="n">safe</span><span class="p">.</span> <span class="k">To</span> <span class="n">inspect</span> <span class="n">the</span> <span class="n">complete</span> <span class="k">state</span>
+<span class="n">use</span> <span class="n">the</span> <span class="o">`</span><span class="n">terraform</span> <span class="k">show</span><span class="o">`</span> <span class="n">command</span><span class="p">.</span>
 
-State path: terraform.tfstate
+<span class="k">State</span> <span class="n">path</span><span class="p">:</span> <span class="n">terraform</span><span class="p">.</span><span class="n">tfstate</span>
 
-Outputs:
+<span class="n">Outputs</span><span class="p">:</span>
 
-guestbook_url = &lt;http endpoint for the sample application&gt;
-</pre></div>
+<span class="n">guestbook_url</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">http</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">application</span><span class="o">&gt;</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -1445,7 +1445,7 @@ guestbook_url = &lt;http endpoint for the sample application&gt;
     
       <script src="../../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
       
     
     

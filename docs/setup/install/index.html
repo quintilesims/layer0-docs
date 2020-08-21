@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -814,51 +814,51 @@ You will use the credentials created in this section when creating, updating, or
 <h2 id="part-3-create-a-new-layer0-instance">Part 3: Create a new Layer0 Instance<a class="headerlink" href="#part-3-create-a-new-layer0-instance" title="Permanent link">#</a></h2>
 <p>Now that you have downloaded Layer0 and configured your AWS account, you can create your Layer0 instance.
 From a command prompt, run the following (replacing <code>&lt;instance_name&gt;</code> with a name for your Layer0 instance):</p>
-<div class="codehilite"><pre><span></span>l0-setup init &lt;instance_name&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0-setup init &lt;instance_name&gt;</span>
+</code></pre></div>
 
 
 <p>This command will prompt you for many different inputs. 
 Enter the required values for <strong>AWS Access Key</strong>, <strong>AWS Secret Key</strong>, and <strong>AWS SSH Key</strong> as they come up.
 All remaining inputs are optional and can be set to their default by pressing enter.</p>
-<div class="codehilite"><pre><span></span>...
-AWS Access Key: The access_key input variable is used to provision the AWS resources
-required for Layer0. This corresponds to the Access Key ID portion of an AWS Access Key.
-It is recommended this key has the &#39;AdministratorAccess&#39; policy. Note that Layer0 will
-only use this key for &#39;l0-setup&#39; commands associated with this Layer0 instance; the
-Layer0 API will use its own key with limited permissions to provision AWS resources.
+<div class="codehilite"><pre><span></span><code><span class="p">...</span>
+<span class="n">AWS</span> <span class="k">Access</span> <span class="k">Key</span><span class="p">:</span> <span class="n">The</span> <span class="n">access_key</span> <span class="k">input</span> <span class="k">variable</span> <span class="k">is</span> <span class="n">used</span> <span class="k">to</span> <span class="n">provision</span> <span class="n">the</span> <span class="n">AWS</span> <span class="n">resources</span>
+<span class="n">required</span> <span class="k">for</span> <span class="n">Layer0</span><span class="p">.</span> <span class="n">This</span> <span class="n">corresponds</span> <span class="k">to</span> <span class="n">the</span> <span class="k">Access</span> <span class="k">Key</span> <span class="n">ID</span> <span class="n">portion</span> <span class="k">of</span> <span class="n">an</span> <span class="n">AWS</span> <span class="k">Access</span> <span class="k">Key</span><span class="p">.</span>
+<span class="n">It</span> <span class="k">is</span> <span class="n">recommended</span> <span class="n">this</span> <span class="k">key</span> <span class="n">has</span> <span class="n">the</span> <span class="s1">&#39;AdministratorAccess&#39;</span> <span class="n">policy</span><span class="p">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">Layer0</span> <span class="n">will</span>
+<span class="k">only</span> <span class="n">use</span> <span class="n">this</span> <span class="k">key</span> <span class="k">for</span> <span class="s1">&#39;l0-setup&#39;</span> <span class="n">commands</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">this</span> <span class="n">Layer0</span> <span class="n">instance</span><span class="p">;</span> <span class="n">the</span>
+<span class="n">Layer0</span> <span class="n">API</span> <span class="n">will</span> <span class="n">use</span> <span class="n">its</span> <span class="n">own</span> <span class="k">key</span> <span class="k">with</span> <span class="n">limited</span> <span class="n">permissions</span> <span class="k">to</span> <span class="n">provision</span> <span class="n">AWS</span> <span class="n">resources</span><span class="p">.</span>
 
-[current: &lt;none&gt;]
-Please enter a value and press &#39;enter&#39;.
-        Input: ABC123xzy
+<span class="p">[</span><span class="k">current</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">none</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">value</span> <span class="k">and</span> <span class="n">press</span> <span class="s1">&#39;enter&#39;</span><span class="p">.</span>
+        <span class="k">Input</span><span class="p">:</span> <span class="n">ABC123xzy</span>
 
-AWS Secret Key: The secret_key input variable is used to provision the AWS resources
-required for Layer0. This corresponds to the Secret Access Key portion of an AWS Access Key.
-It is recommended this key has the &#39;AdministratorAccess&#39; policy. Note that Layer0 will
-only use this key for &#39;l0-setup&#39; commands associated with this Layer0 instance; the
-Layer0 API will use its own key with limited permissions to provision AWS resources.
+<span class="n">AWS</span> <span class="n">Secret</span> <span class="k">Key</span><span class="p">:</span> <span class="n">The</span> <span class="n">secret_key</span> <span class="k">input</span> <span class="k">variable</span> <span class="k">is</span> <span class="n">used</span> <span class="k">to</span> <span class="n">provision</span> <span class="n">the</span> <span class="n">AWS</span> <span class="n">resources</span>
+<span class="n">required</span> <span class="k">for</span> <span class="n">Layer0</span><span class="p">.</span> <span class="n">This</span> <span class="n">corresponds</span> <span class="k">to</span> <span class="n">the</span> <span class="n">Secret</span> <span class="k">Access</span> <span class="k">Key</span> <span class="n">portion</span> <span class="k">of</span> <span class="n">an</span> <span class="n">AWS</span> <span class="k">Access</span> <span class="k">Key</span><span class="p">.</span>
+<span class="n">It</span> <span class="k">is</span> <span class="n">recommended</span> <span class="n">this</span> <span class="k">key</span> <span class="n">has</span> <span class="n">the</span> <span class="s1">&#39;AdministratorAccess&#39;</span> <span class="n">policy</span><span class="p">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">Layer0</span> <span class="n">will</span>
+<span class="k">only</span> <span class="n">use</span> <span class="n">this</span> <span class="k">key</span> <span class="k">for</span> <span class="s1">&#39;l0-setup&#39;</span> <span class="n">commands</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">this</span> <span class="n">Layer0</span> <span class="n">instance</span><span class="p">;</span> <span class="n">the</span>
+<span class="n">Layer0</span> <span class="n">API</span> <span class="n">will</span> <span class="n">use</span> <span class="n">its</span> <span class="n">own</span> <span class="k">key</span> <span class="k">with</span> <span class="n">limited</span> <span class="n">permissions</span> <span class="k">to</span> <span class="n">provision</span> <span class="n">AWS</span> <span class="n">resources</span><span class="p">.</span>
 
-[current: &lt;none&gt;]
-Please enter a value and press &#39;enter&#39;.
-        Input: ZXY987cba
+<span class="p">[</span><span class="k">current</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">none</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">value</span> <span class="k">and</span> <span class="n">press</span> <span class="s1">&#39;enter&#39;</span><span class="p">.</span>
+        <span class="k">Input</span><span class="p">:</span> <span class="n">ZXY987cba</span>
 
-AWS SSH Key Pair: The ssh_key_pair input variable specifies the name of the
-ssh key pair to include in EC2 instances provisioned by Layer0. This key pair must
-already exist in the AWS account. The names of existing key pairs can be found
-in the EC2 dashboard. Note that changing this value will not effect instances
-that have already been provisioned.
+<span class="n">AWS</span> <span class="n">SSH</span> <span class="k">Key</span> <span class="n">Pair</span><span class="p">:</span> <span class="n">The</span> <span class="n">ssh_key_pair</span> <span class="k">input</span> <span class="k">variable</span> <span class="n">specifies</span> <span class="n">the</span> <span class="n">name</span> <span class="k">of</span> <span class="n">the</span>
+<span class="n">ssh</span> <span class="k">key</span> <span class="n">pair</span> <span class="k">to</span> <span class="n">include</span> <span class="k">in</span> <span class="n">EC2</span> <span class="n">instances</span> <span class="n">provisioned</span> <span class="k">by</span> <span class="n">Layer0</span><span class="p">.</span> <span class="n">This</span> <span class="k">key</span> <span class="n">pair</span> <span class="n">must</span>
+<span class="n">already</span> <span class="n">exist</span> <span class="k">in</span> <span class="n">the</span> <span class="n">AWS</span> <span class="n">account</span><span class="p">.</span> <span class="n">The</span> <span class="k">names</span> <span class="k">of</span> <span class="k">existing</span> <span class="k">key</span> <span class="n">pairs</span> <span class="n">can</span> <span class="n">be</span> <span class="k">found</span>
+<span class="k">in</span> <span class="n">the</span> <span class="n">EC2</span> <span class="n">dashboard</span><span class="p">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">changing</span> <span class="n">this</span> <span class="n">value</span> <span class="n">will</span> <span class="k">not</span> <span class="n">effect</span> <span class="n">instances</span>
+<span class="n">that</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">provisioned</span><span class="p">.</span>
 
-[current: &lt;none&gt;]
-Please enter a value and press &#39;enter&#39;.
-        Input: mySSHKey
-...
-</pre></div>
+<span class="p">[</span><span class="k">current</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">none</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">value</span> <span class="k">and</span> <span class="n">press</span> <span class="s1">&#39;enter&#39;</span><span class="p">.</span>
+        <span class="k">Input</span><span class="p">:</span> <span class="n">mySSHKey</span>
+<span class="p">...</span>
+</code></pre></div>
 
 
 <p>Once the <code>init</code> command has successfully completed, you're ready to actually create the resources needed to use Layer0.
 Run the following command (again, replace <code>&lt;instance_name&gt;</code> with the name you've chosen for your Layer0 instance):</p>
-<div class="codehilite"><pre><span></span>l0-setup apply &lt;instance_name&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0-setup apply &lt;instance_name&gt;</span>
+</code></pre></div>
 
 
 <p>The first time you run the <code>apply</code> command, it may take around 5 minutes to complete. 
@@ -873,8 +873,8 @@ These files can be downloaded at any time using the <code>pull</code> command (<
 <p>If you don't have a config file yet, you can generate one by running <code>docker login [registry-address]</code>. 
 A configuration file will be generated at <code>$HOME/.docker/config.json</code>.</p>
 <p>To add this authentication to your Layer0 instance, run:</p>
-<div class="codehilite"><pre><span></span>l0-setup init --docker-path=&lt;path/to/config.json&gt; &lt;instance_name&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0-setup init --docker-path=&lt;path/to/config.json&gt; &lt;instance_name&gt;</span>
+</code></pre></div>
 
 
 <p>This will reconfigure your Layer0 configuration and add a rendered file into your Layer0 instance's directory at <code>$HOME/.layer0/&lt;instance_name&gt;/dockercfg.json</code>.</p>
@@ -895,33 +895,33 @@ For information on how to tag AWS resources, please visit the <a href="http://do
 </ul>
 <p>Once you are sure the existing VPC satisfies these requirements, run the <code>init</code> command, 
 placing the VPC ID when prompted:</p>
-<div class="codehilite"><pre><span></span>l0-setup init &lt;instance_name&gt;
-...
-VPC ID (optional): The vpc_id input variable specifies an existing AWS VPC to provision
-the AWS resources required for Layer0. If no input is specified, a new VPC will be
-created for you. Existing VPCs must satisfy the following constraints:
+<div class="codehilite"><pre><span></span><code><span class="n">l0</span><span class="o">-</span><span class="n">setup</span> <span class="n">init</span> <span class="o">&lt;</span><span class="n">instance_name</span><span class="o">&gt;</span>
+<span class="p">...</span>
+<span class="n">VPC</span> <span class="n">ID</span> <span class="p">(</span><span class="n">optional</span><span class="p">):</span> <span class="n">The</span> <span class="n">vpc_id</span> <span class="k">input</span> <span class="k">variable</span> <span class="n">specifies</span> <span class="n">an</span> <span class="k">existing</span> <span class="n">AWS</span> <span class="n">VPC</span> <span class="k">to</span> <span class="n">provision</span>
+<span class="n">the</span> <span class="n">AWS</span> <span class="n">resources</span> <span class="n">required</span> <span class="k">for</span> <span class="n">Layer0</span><span class="p">.</span> <span class="k">If</span> <span class="k">no</span> <span class="k">input</span> <span class="k">is</span> <span class="n">specified</span><span class="p">,</span> <span class="n">a</span> <span class="k">new</span> <span class="n">VPC</span> <span class="n">will</span> <span class="n">be</span>
+<span class="n">created</span> <span class="k">for</span> <span class="n">you</span><span class="p">.</span> <span class="k">Existing</span> <span class="n">VPCs</span> <span class="n">must</span> <span class="n">satisfy</span> <span class="n">the</span> <span class="n">following</span> <span class="k">constraints</span><span class="p">:</span>
 
-    - Have access to the public internet (through a NAT instance or gateway)
-    - Have at least 1 public and 1 private subnet
-    - Each subnet must be tagged with [&quot;Tier&quot;: &quot;Private&quot;] or [&quot;Tier&quot;: &quot;Public&quot;]
+    <span class="o">-</span> <span class="n">Have</span> <span class="k">access</span> <span class="k">to</span> <span class="n">the</span> <span class="k">public</span> <span class="n">internet</span> <span class="p">(</span><span class="n">through</span> <span class="n">a</span> <span class="n">NAT</span> <span class="n">instance</span> <span class="k">or</span> <span class="n">gateway</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Have</span> <span class="k">at</span> <span class="n">least</span> <span class="mi">1</span> <span class="k">public</span> <span class="k">and</span> <span class="mi">1</span> <span class="n">private</span> <span class="n">subnet</span>
+    <span class="o">-</span> <span class="k">Each</span> <span class="n">subnet</span> <span class="n">must</span> <span class="n">be</span> <span class="n">tagged</span> <span class="k">with</span> <span class="p">[</span><span class="ss">&quot;Tier&quot;</span><span class="p">:</span> <span class="ss">&quot;Private&quot;</span><span class="p">]</span> <span class="k">or</span> <span class="p">[</span><span class="ss">&quot;Tier&quot;</span><span class="p">:</span> <span class="ss">&quot;Public&quot;</span><span class="p">]</span>
 
-Note that changing this value will destroy and recreate any existing resources.
+<span class="n">Note</span> <span class="n">that</span> <span class="n">changing</span> <span class="n">this</span> <span class="n">value</span> <span class="n">will</span> <span class="k">destroy</span> <span class="k">and</span> <span class="n">recreate</span> <span class="k">any</span> <span class="k">existing</span> <span class="n">resources</span><span class="p">.</span>
 
-[current: ]
-Please enter a new value, or press &#39;enter&#39; to keep the current value.
-        Input: vpc123
-</pre></div>
+<span class="p">[</span><span class="k">current</span><span class="p">:</span> <span class="p">]</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="k">new</span> <span class="n">value</span><span class="p">,</span> <span class="k">or</span> <span class="n">press</span> <span class="s1">&#39;enter&#39;</span> <span class="k">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="k">current</span> <span class="n">value</span><span class="p">.</span>
+        <span class="k">Input</span><span class="p">:</span> <span class="n">vpc123</span>
+</code></pre></div>
 
 
 <p>Once the command has completed, it is safe to run <a href="../../reference/setup-cli#apply">apply</a> to provision the resources. </p>
 <h2 id="part-4-connect-to-a-layer0-instance">Part 4: Connect to a Layer0 Instance<a class="headerlink" href="#part-4-connect-to-a-layer0-instance" title="Permanent link">#</a></h2>
 <p>Once the <code>apply</code> command has run successfully, you can configure the environment variables needed to connect to the Layer0 API using the <code>endpoint</code> command.</p>
-<div class="codehilite"><pre><span></span>l0-setup endpoint --insecure &lt;instance_name&gt;
-export LAYER0_API_ENDPOINT=&quot;https://l0-instance_name-api-123456.us-west-2.elb.amazonaws.com&quot;
-export LAYER0_AUTH_TOKEN=&quot;abcDEFG123&quot;
-export LAYER0_SKIP_SSL_VERIFY=&quot;1&quot;
-export LAYER0_SKIP_VERSION_VERIFY=&quot;1&quot;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">l0-setup endpoint --insecure &lt;instance_name&gt;</span>
+<span class="err">export LAYER0_API_ENDPOINT=&quot;https://l0-instance_name-api-123456.us-west-2.elb.amazonaws.com&quot;</span>
+<span class="err">export LAYER0_AUTH_TOKEN=&quot;abcDEFG123&quot;</span>
+<span class="err">export LAYER0_SKIP_SSL_VERIFY=&quot;1&quot;</span>
+<span class="err">export LAYER0_SKIP_VERSION_VERIFY=&quot;1&quot;</span>
+</code></pre></div>
 
 
 <div class="admonition danger">
@@ -1008,7 +1008,7 @@ These settings are <strong>not</strong> recommended for production use!</p>
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     
