@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -1395,7 +1395,7 @@ Copy this <code>terraform-provider-layer0</code> binary into <code>$HOME/.terraf
 <p>The Layer0 provider is used to interact with a Layer0 API.
 The provider needs to be configured with the proper credentials before it can be used.</p>
 <h3 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Add &#39;endpoint&#39; and &#39;token&#39; variables
+<div class="codehilite"><pre><span></span><code># Add &#39;endpoint&#39; and &#39;token&#39; variables
 variable &quot;endpoint&quot; {}
 
 variable &quot;token&quot; {}
@@ -1406,7 +1406,7 @@ provider &quot;layer0&quot; {
   token           = &quot;<span class="cp">${</span><span class="n">var</span><span class="o">.</span><span class="n">token</span><span class="cp">}</span>&quot;
   skip_ssl_verify = true
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference">Argument Reference<a class="headerlink" href="#argument-reference" title="Permanent link">#</a></h3>
@@ -1424,14 +1424,14 @@ provider &quot;layer0&quot; {
 <h2 id="api-data-source">API Data Source<a class="headerlink" href="#api-data-source" title="Permanent link">#</a></h2>
 <p>The API data source is used to extract useful read-only variables from the Layer0 API.</p>
 <h3 id="example-usage_1">Example Usage<a class="headerlink" href="#example-usage_1" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the api data source
+<div class="codehilite"><pre><span></span><code># Configure the api data source
 data &quot;layer0_api&quot; &quot;config&quot; {}
 
 # Output the layer0 vpc id
 output &quot;vpc id&quot; {
   val = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_api</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">vpc_id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="attribute-reference">Attribute Reference<a class="headerlink" href="#attribute-reference" title="Permanent link">#</a></h3>
@@ -1446,7 +1446,7 @@ output &quot;vpc id&quot; {
 <h2 id="deploy-data-source">Deploy Data Source<a class="headerlink" href="#deploy-data-source" title="Permanent link">#</a></h2>
 <p>The Deploy data source is used to extract Layer0 Deploy attributes.</p>
 <h3 id="example-usage_2">Example Usage<a class="headerlink" href="#example-usage_2" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the deploy data source
+<div class="codehilite"><pre><span></span><code># Configure the deploy data source
 data &quot;layer0_deploy&quot; &quot;dpl&quot; {
   name    = &quot;my-deploy&quot;
   version = &quot;1&quot;
@@ -1456,7 +1456,7 @@ data &quot;layer0_deploy&quot; &quot;dpl&quot; {
 output &quot;deploy_id&quot; {
   val = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_deploy</span><span class="o">.</span><span class="n">dpl</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference_1">Argument Reference<a class="headerlink" href="#argument-reference_1" title="Permanent link">#</a></h3>
@@ -1476,7 +1476,7 @@ output &quot;deploy_id&quot; {
 <h2 id="environment-data-source">Environment Data Source<a class="headerlink" href="#environment-data-source" title="Permanent link">#</a></h2>
 <p>The Environment data source is used to extract Layer0 Environment attributes.</p>
 <h3 id="example-usage_3">Example Usage<a class="headerlink" href="#example-usage_3" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the environment data source
+<div class="codehilite"><pre><span></span><code># Configure the environment data source
 data &quot;layer0_environment&quot; &quot;env&quot; {
   name = &quot;my-environment&quot;
 }
@@ -1485,7 +1485,7 @@ data &quot;layer0_environment&quot; &quot;env&quot; {
 output &quot;environment_id&quot; {
   val = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_environment</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference_2">Argument Reference<a class="headerlink" href="#argument-reference_2" title="Permanent link">#</a></h3>
@@ -1507,7 +1507,7 @@ output &quot;environment_id&quot; {
 <h2 id="load-balancer-data-source">Load Balancer Data Source<a class="headerlink" href="#load-balancer-data-source" title="Permanent link">#</a></h2>
 <p>The Load Balancer data source is used to extract Layer0 Load Balancer attributes.</p>
 <h3 id="example-usage_4">Example Usage<a class="headerlink" href="#example-usage_4" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the load balancer source
+<div class="codehilite"><pre><span></span><code># Configure the load balancer source
 data &quot;layer0_load_balancer&quot; &quot;lb&quot; {
   name           = &quot;my-loadbalancer&quot;
   environment_id = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_environment</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">environment_id</span><span class="cp">}</span>&quot;
@@ -1517,7 +1517,7 @@ data &quot;layer0_load_balancer&quot; &quot;lb&quot; {
 output &quot;load_balancer_id&quot; {
   val = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_load_balancer</span><span class="o">.</span><span class="n">lb</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference_3">Argument Reference<a class="headerlink" href="#argument-reference_3" title="Permanent link">#</a></h3>
@@ -1540,7 +1540,7 @@ output &quot;load_balancer_id&quot; {
 <h2 id="service-data-source">Service Data Source<a class="headerlink" href="#service-data-source" title="Permanent link">#</a></h2>
 <p>The Service data source is used to extract Layer0 Service attributes.</p>
 <h3 id="example-usage_5">Example Usage<a class="headerlink" href="#example-usage_5" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the service data source
+<div class="codehilite"><pre><span></span><code># Configure the service data source
 data &quot;layer0_service&quot; &quot;svc&quot; {
   name           = &quot;my-service&quot;
   environment_id = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_environment</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">environment_id</span><span class="cp">}</span>&quot;
@@ -1550,7 +1550,7 @@ data &quot;layer0_service&quot; &quot;svc&quot; {
 output &quot;service_id&quot; {
   val = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">layer0_service</span><span class="o">.</span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference_4">Argument Reference<a class="headerlink" href="#argument-reference_4" title="Permanent link">#</a></h3>
@@ -1574,9 +1574,9 @@ output &quot;service_id&quot; {
 <p>Performing variable substitution inside of your deploy's json file (typically named <code>Dockerrun.aws.json</code>) can be done through Terraform's <a href="https://www.terraform.io/docs/providers/template/">template_file</a>.
 For a working example, please see the sample <a href="https://github.com/quintilesims/guides/blob/master/guestbook/module/main.tf">Guestbook</a> application</p>
 <h3 id="example-usage_6">Example Usage<a class="headerlink" href="#example-usage_6" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Configure the deploy template
+<div class="codehilite"><pre><span></span><code># Configure the deploy template
 data &quot;template_file&quot; &quot;guestbook&quot; {
-  template = &quot;<span class="cp">${</span><span class="nb">file</span><span class="p">(</span><span class="s2">&quot;Dockerrun.aws.json&quot;</span><span class="p">)</span><span class="cp">}</span>&quot;
+  template = &quot;<span class="cp">${</span><span class="n">file</span><span class="p">(</span><span class="s2">&quot;Dockerrun.aws.json&quot;</span><span class="p">)</span><span class="cp">}</span>&quot;
   vars {
     docker_image_tag = &quot;latest&quot;
   }
@@ -1587,7 +1587,7 @@ resource &quot;layer0_deploy&quot; &quot;guestbook&quot; {
   name    = &quot;guestbook&quot;
   content = &quot;<span class="cp">${</span><span class="n">data</span><span class="o">.</span><span class="n">template_file</span><span class="o">.</span><span class="n">guestbook</span><span class="o">.</span><span class="n">rendered</span><span class="cp">}</span>&quot;
 }
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="argument-reference_5">Argument Reference<a class="headerlink" href="#argument-reference_5" title="Permanent link">#</a></h3>
@@ -1607,16 +1607,16 @@ resource &quot;layer0_deploy&quot; &quot;guestbook&quot; {
 <h2 id="environment-resource">Environment Resource<a class="headerlink" href="#environment-resource" title="Permanent link">#</a></h2>
 <p>Provides a Layer0 Environment</p>
 <h3 id="example-usage_7">Example Usage<a class="headerlink" href="#example-usage_7" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Create a new environment
-resource &quot;layer0_environment&quot; &quot;demo&quot; {
-  name      = &quot;demo&quot;
-  size      = &quot;m3.medium&quot;
-  min_count = 0
-  user_data = &quot;echo hello, world&quot;
-  os        = &quot;linux&quot;
-  ami       = &quot;ami123&quot;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err"># Create a new environment</span>
+<span class="err">resource &quot;layer0_environment&quot; &quot;demo&quot; {</span>
+<span class="err">  name      = &quot;demo&quot;</span>
+<span class="err">  size      = &quot;m3.medium&quot;</span>
+<span class="err">  min_count = 0</span>
+<span class="err">  user_data = &quot;echo hello, world&quot;</span>
+<span class="err">  os        = &quot;linux&quot;</span>
+<span class="err">  ami       = &quot;ami123&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <h3 id="argument-reference_6">Argument Reference<a class="headerlink" href="#argument-reference_6" title="Permanent link">#</a></h3>
@@ -1648,37 +1648,37 @@ If not specified, Layer0 will use its default AMI ID for the specified operating
 <h2 id="load-balancer-resource">Load Balancer Resource<a class="headerlink" href="#load-balancer-resource" title="Permanent link">#</a></h2>
 <p>Provides a Layer0 Load Balancer</p>
 <h3 id="example-usage_8">Example Usage<a class="headerlink" href="#example-usage_8" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Create a new load balancer
-resource &quot;layer0_load_balancer&quot; &quot;guestbook&quot; {
-  name        = &quot;guestbook&quot;
-  environment = &quot;demo123&quot;
-  private     = false
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="k">Create</span> <span class="n">a</span> <span class="k">new</span> <span class="k">load</span> <span class="n">balancer</span>
+<span class="n">resource</span> <span class="ss">&quot;layer0_load_balancer&quot;</span> <span class="ss">&quot;guestbook&quot;</span> <span class="err">{</span>
+  <span class="n">name</span>        <span class="o">=</span> <span class="ss">&quot;guestbook&quot;</span>
+  <span class="n">environment</span> <span class="o">=</span> <span class="ss">&quot;demo123&quot;</span>
+  <span class="n">private</span>     <span class="o">=</span> <span class="k">false</span>
 
-  port {
-    host_port      = 80
-    container_port = 80
-    protocol       = &quot;http&quot;
-  }
+  <span class="n">port</span> <span class="err">{</span>
+    <span class="n">host_port</span>      <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">container_port</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">protocol</span>       <span class="o">=</span> <span class="ss">&quot;http&quot;</span>
+  <span class="err">}</span>
 
-  port {
-    host_port      = 443
-    container_port = 443
-    protocol       = &quot;https&quot;
-    certificate    = &quot;cert&quot;
-  }
+  <span class="n">port</span> <span class="err">{</span>
+    <span class="n">host_port</span>      <span class="o">=</span> <span class="mi">443</span>
+    <span class="n">container_port</span> <span class="o">=</span> <span class="mi">443</span>
+    <span class="n">protocol</span>       <span class="o">=</span> <span class="ss">&quot;https&quot;</span>
+    <span class="n">certificate</span>    <span class="o">=</span> <span class="ss">&quot;cert&quot;</span>
+  <span class="err">}</span>
 
-  health_check {
-    target              = &quot;tcp:80&quot;
-    interval            = 30
-    timeout             = 5
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-  }
+  <span class="n">health_check</span> <span class="err">{</span>
+    <span class="n">target</span>              <span class="o">=</span> <span class="ss">&quot;tcp:80&quot;</span>
+    <span class="nb">interval</span>            <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">timeout</span>             <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">healthy_threshold</span>   <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">unhealthy_threshold</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="err">}</span>
 
-  idle_timeout = 300
-  cross_zone   = false
-}
-</pre></div>
+  <span class="n">idle_timeout</span> <span class="o">=</span> <span class="mi">300</span>
+  <span class="n">cross_zone</span>   <span class="o">=</span> <span class="k">false</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <h3 id="argument-reference_7">Argument Reference<a class="headerlink" href="#argument-reference_7" title="Permanent link">#</a></h3>
@@ -1725,15 +1725,15 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook&quot; {
 <h2 id="service-resource">Service Resource<a class="headerlink" href="#service-resource" title="Permanent link">#</a></h2>
 <p>Provides a Layer0 Service</p>
 <h3 id="example-usage_9">Example Usage<a class="headerlink" href="#example-usage_9" title="Permanent link">#</a></h3>
-<div class="codehilite"><pre><span></span># Create a new service
-resource &quot;layer0_service&quot; &quot;guestbook&quot; {
-  name          = &quot;guestbook&quot;
-  environment   = &quot;environment123&quot;
-  deploy        = &quot;deploy123&quot;
-  load_balancer = &quot;loadbalancer123&quot;
-  scale         = 3
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err"># Create a new service</span>
+<span class="err">resource &quot;layer0_service&quot; &quot;guestbook&quot; {</span>
+<span class="err">  name          = &quot;guestbook&quot;</span>
+<span class="err">  environment   = &quot;environment123&quot;</span>
+<span class="err">  deploy        = &quot;deploy123&quot;</span>
+<span class="err">  load_balancer = &quot;loadbalancer123&quot;</span>
+<span class="err">  scale         = 3</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <h3 id="argument-reference_8">Argument Reference<a class="headerlink" href="#argument-reference_8" title="Permanent link">#</a></h3>
@@ -1841,7 +1841,7 @@ Terraform has documentation for using S3 as a backend <a href="https://www.terra
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     

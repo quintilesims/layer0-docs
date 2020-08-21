@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -746,9 +746,9 @@
 <p>Next, you will create a new deploy for the task using the <strong>deploy create</strong> command. At the command prompt, run the following command:</p>
 <p><code>l0 deploy create Dockerrun.aws.json one-off-task-dpl</code></p>
 <p>You will see the following output:</p>
-<div class="codehilite"><pre><span></span>DEPLOY ID           DEPLOY NAME        VERSION
-one-off-task-dpl.1  one-off-task-dpl   1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DEPLOY ID           DEPLOY NAME        VERSION</span>
+<span class="err">one-off-task-dpl.1  one-off-task-dpl   1</span>
+</code></pre></div>
 
 
 <h2 id="part-3-create-the-task">Part 3: Create the task<a class="headerlink" href="#part-3-create-the-task" title="Permanent link">#</a></h2>
@@ -756,9 +756,9 @@ one-off-task-dpl.1  one-off-task-dpl   1
 <p>To run the task, use the following command:</p>
 <p><code>l0 task create demo-env echo-tsk one-off-task-dpl:latest --wait</code></p>
 <p>You will see the following output:</p>
-<div class="codehilite"><pre><span></span>TASK ID       TASK NAME         ENVIRONMENT  DEPLOY              SCALE
-one-off851c9  echo-tsk          demo-env     one-off-task-dpl:1  0/1 (1)
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">TASK ID       TASK NAME         ENVIRONMENT  DEPLOY              SCALE</span>
+<span class="err">one-off851c9  echo-tsk          demo-env     one-off-task-dpl:1  0/1 (1)</span>
+</code></pre></div>
 
 
 <p>The <code>SCALE</code> column shows the running, desired and pending counts. A value of <code>0/1 (1)</code> indicates that running = 0, desired = 1 and (1) for 1 pending task that is about to transition to running state. After your task has finished running, note that the desired count will remain 1 and pending value will no longer be shown, so the value will be <code>0/1</code> for a finished task.</p>
@@ -766,61 +766,61 @@ one-off851c9  echo-tsk          demo-env     one-off-task-dpl:1  0/1 (1)
 <p>To view the logs for this task, and evaluate its progress, you can use the <strong>task logs</strong> command:</p>
 <p><code>l0 task logs echo-tsk</code></p>
 <p>You will see the following output:</p>
-<div class="codehilite"><pre><span></span><span class="gh">alpine</span>
+<div class="codehilite"><pre><span></span><code><span class="gh">alpine</span>
 <span class="gh">------</span>
 Task finished!
-</pre></div>
+</code></pre></div>
 
 
 <p>You can also use the following command for more information in the task.</p>
 <p><code>l0 -o json task get echo-tsk</code></p>
 <p>Outputs:</p>
-<div class="codehilite"><pre><span></span>[
-    {
-        &quot;copies&quot;: [
-            {
-                &quot;details&quot;: [],
-                &quot;reason&quot;: &quot;Waiting for cluster capacity to run&quot;,
-                &quot;task_copy_id&quot;: &quot;&quot;
-            }
-        ],
-        &quot;deploy_id&quot;: &quot;one-off-task-dpl.2&quot;,
-        &quot;deploy_name&quot;: &quot;one-off-task-dpl&quot;,
-        &quot;deploy_version&quot;: &quot;2&quot;,
-        &quot;desired_count&quot;: 1,
-        &quot;environment_id&quot;: &quot;demoenv669e4&quot;,
-        &quot;environment_name&quot;: &quot;demo-env&quot;,
-        &quot;pending_count&quot;: 1,
-        &quot;running_count&quot;: 0,
-        &quot;task_id&quot;: &quot;echotsk1facd&quot;,
-        &quot;task_name&quot;: &quot;echo-tsk&quot;
-    }
-]
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[</span>
+<span class="err">    {</span>
+<span class="err">        &quot;copies&quot;: [</span>
+<span class="err">            {</span>
+<span class="err">                &quot;details&quot;: [],</span>
+<span class="err">                &quot;reason&quot;: &quot;Waiting for cluster capacity to run&quot;,</span>
+<span class="err">                &quot;task_copy_id&quot;: &quot;&quot;</span>
+<span class="err">            }</span>
+<span class="err">        ],</span>
+<span class="err">        &quot;deploy_id&quot;: &quot;one-off-task-dpl.2&quot;,</span>
+<span class="err">        &quot;deploy_name&quot;: &quot;one-off-task-dpl&quot;,</span>
+<span class="err">        &quot;deploy_version&quot;: &quot;2&quot;,</span>
+<span class="err">        &quot;desired_count&quot;: 1,</span>
+<span class="err">        &quot;environment_id&quot;: &quot;demoenv669e4&quot;,</span>
+<span class="err">        &quot;environment_name&quot;: &quot;demo-env&quot;,</span>
+<span class="err">        &quot;pending_count&quot;: 1,</span>
+<span class="err">        &quot;running_count&quot;: 0,</span>
+<span class="err">        &quot;task_id&quot;: &quot;echotsk1facd&quot;,</span>
+<span class="err">        &quot;task_name&quot;: &quot;echo-tsk&quot;</span>
+<span class="err">    }</span>
+<span class="err">]</span>
+</code></pre></div>
 
 
 <p>After the task has finished, running <code>l0 -o json task get echo-tsk</code> will show a pending_count of 0.</p>
 <p>Outputs:</p>
-<div class="codehilite"><pre><span></span>...
-&quot;copies&quot;: [
-    {
-        &quot;details&quot;: [
-            {
-                &quot;container_name&quot;: &quot;alpine&quot;,
-                &quot;exit_code&quot;: 0,
-                &quot;last_status&quot;: &quot;STOPPED&quot;,
-                &quot;reason&quot;: &quot;&quot;
-            }
-        ],
-        &quot;reason&quot;: &quot;Essential container in task exited&quot;,
-        &quot;task_copy_id&quot;: &quot;arn:aws:ecs:us-west-2:856306994068:task/0e723c3e-9cd1-4914-8393-b59abd40eb89&quot;
-    }
-],
-...
-&quot;pending_count&quot;: 0,
-&quot;running_count&quot;: 0,
-...
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err">&quot;copies&quot;: [</span>
+<span class="err">    {</span>
+<span class="err">        &quot;details&quot;: [</span>
+<span class="err">            {</span>
+<span class="err">                &quot;container_name&quot;: &quot;alpine&quot;,</span>
+<span class="err">                &quot;exit_code&quot;: 0,</span>
+<span class="err">                &quot;last_status&quot;: &quot;STOPPED&quot;,</span>
+<span class="err">                &quot;reason&quot;: &quot;&quot;</span>
+<span class="err">            }</span>
+<span class="err">        ],</span>
+<span class="err">        &quot;reason&quot;: &quot;Essential container in task exited&quot;,</span>
+<span class="err">        &quot;task_copy_id&quot;: &quot;arn:aws:ecs:us-west-2:856306994068:task/0e723c3e-9cd1-4914-8393-b59abd40eb89&quot;</span>
+<span class="err">    }</span>
+<span class="err">],</span>
+<span class="err">...</span>
+<span class="err">&quot;pending_count&quot;: 0,</span>
+<span class="err">&quot;running_count&quot;: 0,</span>
+<span class="err">...</span>
+</code></pre></div>
                 
                   
                 
@@ -894,7 +894,7 @@ Task finished!
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
     
     

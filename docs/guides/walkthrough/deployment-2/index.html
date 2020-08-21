@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.6">
     
     
       
@@ -967,9 +967,9 @@ We'll also need to specify a non-default health check target, since the load bal
 At the command prompt, execute the following:</p>
 <p><code>l0 loadbalancer create --port 6379:6379/tcp --private --healthcheck-target tcp:6379 demo-env redis-lb</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE  PORTS          PUBLIC  URL  IDLE  TIMEOUT
-redislb16ae6     redis-lb           demo-env              6378:6379:TCP  false        60
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE  PORTS          PUBLIC  URL  IDLE  TIMEOUT</span>
+<span class="err">redislb16ae6     redis-lb           demo-env              6378:6379:TCP  false        60</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above command:</p>
@@ -987,9 +987,9 @@ redislb16ae6     redis-lb           demo-env              6378:6379:TCP  false  
 At the command prompt, execute the following:</p>
 <p><code>l0 deploy create Redis.Dockerrun.aws.json redis-dpl</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>DEPLOY ID    DEPLOY NAME  VERSION
-redis-dpl.1  redis-dpl    1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DEPLOY ID    DEPLOY NAME  VERSION</span>
+<span class="err">redis-dpl.1  redis-dpl    1</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above command:</p>
@@ -1004,9 +1004,9 @@ redis-dpl.1  redis-dpl    1
 At the command prompt, execute the following:</p>
 <p><code>l0 service create --wait --loadbalancer demo-env:redis-lb demo-env redis-svc redis-dpl:latest</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME  ENVIRONMENT  LOADBALANCER  DEPLOYMENTS  SCALE
-redislb16ae6  redis-svc     demo-env     redis-lb      redis-dpl:1  0/1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME  ENVIRONMENT  LOADBALANCER  DEPLOYMENTS  SCALE</span>
+<span class="err">redislb16ae6  redis-svc     demo-env     redis-lb      redis-dpl:1  0/1</span>
+</code></pre></div>
 
 
 <p>The following is a summary of the arguments passed in the above commands:</p>
@@ -1027,9 +1027,9 @@ redislb16ae6  redis-svc     demo-env     redis-lb      redis-dpl:1  0/1
 <p>Once the service has finished scaling, try looking at the service's logs to see the output that the Redis server creates:</p>
 <p><code>l0 service logs redis-svc</code></p>
 <p>Among some warnings and information not important to this exercise and a fun bit of ASCII art, you should see something like the following:</p>
-<div class="codehilite"><pre><span></span>... # words and ASCII art
-1:M 05 Apr 23:29:47.333 * The server is now ready to accept connections on port 6379
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">... # words and ASCII art</span>
+<span class="c">1:M 05 Apr 23:29:47.333 * The server is now ready to accept connections on port 6379</span>
+</code></pre></div>
 
 
 <p>Now we just need to teach the Guestbook application how to talk with our Redis service.</p>
@@ -1037,7 +1037,7 @@ redislb16ae6  redis-svc     demo-env     redis-lb      redis-dpl:1  0/1
 <h3 id="part-5-update-the-guestbook-deploy">Part 5: Update the Guestbook Deploy<a class="headerlink" href="#part-5-update-the-guestbook-deploy" title="Permanent link">#</a></h3>
 <p>You should see in <code>walkthrough/deployment-2/</code> another <code>Guestbook.Dockerrun.aws.json</code> file.
 This file is very similar to but not the same as the one in <code>deployment-1/</code> - if you open it up, you can see the following additions:</p>
-<div class="codehilite"><pre><span></span>    <span class="err">...</span>
+<div class="codehilite"><pre><span></span><code>    <span class="err">...</span>
     <span class="s2">&quot;environment&quot;</span><span class="err">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GUESTBOOK_BACKEND_TYPE&quot;</span><span class="p">,</span>
@@ -1049,27 +1049,27 @@ This file is very similar to but not the same as the one in <code>deployment-1/<
         <span class="p">}</span>
     <span class="p">]</span><span class="err">,</span>
     <span class="err">...</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The <code>"GUESTBOOK_BACKEND_CONFIG"</code> variable is what will point the Guestbook application towards the Redis server.
 The <code>&lt;redis host and port here&gt;</code> section needs to be replaced and populated in the following format:</p>
-<div class="codehilite"><pre><span></span><span class="s2">&quot;value&quot;</span><span class="err">:</span> <span class="s2">&quot;ADDRESS_OF_REDIS_SERVER:PORT_THE_SERVER_IS_SERVING_ON&quot;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;value&quot;</span><span class="err">:</span> <span class="s2">&quot;ADDRESS_OF_REDIS_SERVER:PORT_THE_SERVER_IS_SERVING_ON&quot;</span>
+</code></pre></div>
 
 
 <p>We already know that Redis is serving on port 6379, so let's go find the server's address.
 Remember, it lives behind a load balancer that we made, so run the following command:</p>
 <p><code>l0 loadbalancer get redis-lb</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE    PORTS          PUBLIC  URL                                          IDLE  TIMEOUT
-redislb16ae6     redis-lb           demo-env     redis-svc  6379:6379/TCP  false   internal-l0-&lt;yadda-yadda&gt;.elb.amazonaws.com  60
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE    PORTS          PUBLIC  URL                                          IDLE  TIMEOUT</span>
+<span class="err">redislb16ae6     redis-lb           demo-env     redis-svc  6379:6379/TCP  false   internal-l0-&lt;yadda-yadda&gt;.elb.amazonaws.com  60</span>
+</code></pre></div>
 
 
 <p>Copy that <code>URL</code> value, replace <code>&lt;redis host and port here&gt;</code> with the <code>URL</code> value in <code>Guestbook.Dockerrun.aws.json</code>, append <code>:6379</code> to it, and save the file.
 It should look something like the following:</p>
-<div class="codehilite"><pre><span></span>    <span class="err">...</span>
+<div class="codehilite"><pre><span></span><code>    <span class="err">...</span>
     <span class="s2">&quot;environment&quot;</span><span class="err">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GUESTBOOK_BACKEND_CONFIG&quot;</span><span class="p">,</span>
@@ -1077,15 +1077,15 @@ It should look something like the following:</p>
         <span class="p">}</span>
     <span class="p">]</span><span class="err">,</span>
     <span class="err">...</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Now, we can create an updated deploy:</p>
 <p><code>l0 deploy create Guestbook.Dockerrun.aws.json guestbook-dpl</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>DEPLOY ID        DEPLOY NAME    VERSION
-guestbook-dpl.2  guestbook-dpl  2
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">DEPLOY ID        DEPLOY NAME    VERSION</span>
+<span class="err">guestbook-dpl.2  guestbook-dpl  2</span>
+</code></pre></div>
 
 
 <hr />
@@ -1094,30 +1094,30 @@ guestbook-dpl.2  guestbook-dpl  2
 Now we just need to apply the new Guestbook deploy to the running Guestbook service:</p>
 <p><code>l0 service update guestbook-svc guestbook-dpl:latest</code></p>
 <p>As the Guestbook service moves through the phases of its update process, we should see outputs like the following (if we keep an eye on the service with <code>l0 service get guestbook-svc</code>, that is):</p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2*  1/1
-                                                        guestbook-dpl:1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2*  1/1</span>
+<span class="err">                                                        guestbook-dpl:1</span>
+</code></pre></div>
 
 
 <p><em>above: <code>guestbook-dpl:2</code> is in a transitional state</em></p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE
-guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  2/1
-                                                        guestbook-dpl:1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE</span>
+<span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  2/1</span>
+<span class="err">                                                        guestbook-dpl:1</span>
+</code></pre></div>
 
 
 <p><em>above: both versions of the deployment are running at scale</em></p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE
-guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2   1/1
-                                                        guestbook-dpl:1*
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
+<span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2   1/1</span>
+<span class="err">                                                        guestbook-dpl:1*</span>
+</code></pre></div>
 
 
 <p><em>above: <code>guestbook-dpl:1</code> is in a transitional state</em></p>
-<div class="codehilite"><pre><span></span>SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE
-guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  1/1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE</span>
+<span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  1/1</span>
+</code></pre></div>
 
 
 <p><em>above: <code>guestbook-dpl:1</code> has been removed, and only <code>guestbook-dpl:2</code> remains</em></p>
@@ -1190,36 +1190,36 @@ This will create a local <code>.terraform/</code> directory.</p>
 At the command prompt, execute the following command:</p>
 <p><code>terraform init</code></p>
 <p>We should see output like the following:</p>
-<div class="codehilite"><pre><span></span>Initializing modules...
-- module.redis
-  Getting source &quot;github.com/quintilesims/redis//terraform&quot;
-- module.guestbook
-  Getting source &quot;github.com/quintilesims/guides//guestbook/module&quot;
+<div class="codehilite"><pre><span></span><code><span class="n">Initializing</span> <span class="n">modules</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">module</span><span class="p">.</span><span class="n">redis</span>
+  <span class="n">Getting</span> <span class="k">source</span> <span class="ss">&quot;github.com/quintilesims/redis//terraform&quot;</span>
+<span class="o">-</span> <span class="n">module</span><span class="p">.</span><span class="n">guestbook</span>
+  <span class="n">Getting</span> <span class="k">source</span> <span class="ss">&quot;github.com/quintilesims/guides//guestbook/module&quot;</span>
 
-Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider &quot;template&quot; (1.0.0)...
+<span class="n">Initializing</span> <span class="n">provider</span> <span class="n">plugins</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">Checking</span> <span class="k">for</span> <span class="n">available</span> <span class="n">provider</span> <span class="n">plugins</span> <span class="k">on</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">releases</span><span class="p">.</span><span class="n">hashicorp</span><span class="p">.</span><span class="n">com</span><span class="p">...</span>
+<span class="o">-</span> <span class="n">Downloading</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">provider</span> <span class="ss">&quot;template&quot;</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">)...</span>
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
+<span class="n">The</span> <span class="n">following</span> <span class="n">providers</span> <span class="k">do</span> <span class="k">not</span> <span class="n">have</span> <span class="k">any</span> <span class="k">version</span> <span class="k">constraints</span> <span class="k">in</span> <span class="n">configuration</span><span class="p">,</span>
+<span class="n">so</span> <span class="n">the</span> <span class="n">latest</span> <span class="k">version</span> <span class="n">was</span> <span class="n">installed</span><span class="p">.</span>
 
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &quot;...&quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
+<span class="k">To</span> <span class="n">prevent</span> <span class="n">automatic</span> <span class="n">upgrades</span> <span class="k">to</span> <span class="k">new</span> <span class="n">major</span> <span class="k">versions</span> <span class="n">that</span> <span class="n">may</span> <span class="n">contain</span> <span class="n">breaking</span>
+<span class="n">changes</span><span class="p">,</span> <span class="n">it</span> <span class="k">is</span> <span class="n">recommended</span> <span class="k">to</span> <span class="k">add</span> <span class="k">version</span> <span class="o">=</span> <span class="ss">&quot;...&quot;</span> <span class="k">constraints</span> <span class="k">to</span> <span class="n">the</span>
+<span class="n">corresponding</span> <span class="n">provider</span> <span class="n">blocks</span> <span class="k">in</span> <span class="n">configuration</span><span class="p">,</span> <span class="k">with</span> <span class="n">the</span> <span class="k">constraint</span> <span class="n">strings</span>
+<span class="n">suggested</span> <span class="n">below</span><span class="p">.</span>
 
-* provider.template: version = &quot;~&gt; 1.0&quot;
+<span class="o">*</span> <span class="n">provider</span><span class="p">.</span><span class="k">template</span><span class="p">:</span> <span class="k">version</span> <span class="o">=</span> <span class="ss">&quot;~&gt; 1.0&quot;</span>
 
-Terraform has been successfully initialized!
+<span class="n">Terraform</span> <span class="n">has</span> <span class="n">been</span> <span class="n">successfully</span> <span class="n">initialized</span><span class="o">!</span>
 
-You may now begin working with Terraform. Try running &quot;terraform plan&quot; to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
+<span class="n">You</span> <span class="n">may</span> <span class="n">now</span> <span class="k">begin</span> <span class="n">working</span> <span class="k">with</span> <span class="n">Terraform</span><span class="p">.</span> <span class="n">Try</span> <span class="n">running</span> <span class="ss">&quot;terraform plan&quot;</span> <span class="k">to</span> <span class="n">see</span>
+<span class="k">any</span> <span class="n">changes</span> <span class="n">that</span> <span class="k">are</span> <span class="n">required</span> <span class="k">for</span> <span class="n">your</span> <span class="n">infrastructure</span><span class="p">.</span> <span class="k">All</span> <span class="n">Terraform</span> <span class="n">commands</span>
+<span class="n">should</span> <span class="n">now</span> <span class="k">work</span><span class="p">.</span>
 
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-</pre></div>
+<span class="k">If</span> <span class="n">you</span> <span class="n">ever</span> <span class="k">set</span> <span class="k">or</span> <span class="n">change</span> <span class="n">modules</span> <span class="k">or</span> <span class="n">backend</span> <span class="n">configuration</span> <span class="k">for</span> <span class="n">Terraform</span><span class="p">,</span>
+<span class="n">rerun</span> <span class="n">this</span> <span class="n">command</span> <span class="k">to</span> <span class="n">reinitialize</span> <span class="n">your</span> <span class="n">working</span> <span class="n">directory</span><span class="p">.</span> <span class="k">If</span> <span class="n">you</span> <span class="n">forget</span><span class="p">,</span> <span class="n">other</span>
+<span class="n">commands</span> <span class="n">will</span> <span class="n">detect</span> <span class="n">it</span> <span class="k">and</span> <span class="n">remind</span> <span class="n">you</span> <span class="k">to</span> <span class="k">do</span> <span class="n">so</span> <span class="k">if</span> <span class="n">necessary</span><span class="p">.</span>
+</code></pre></div>
 
 
 <hr />
@@ -1228,7 +1228,7 @@ commands will detect it and remind you to do so if necessary.
 <p><code>terraform plan</code></p>
 <p>As before, we'll be prompted for any variables Terraform needs and doesn't have (see the note in <a href="deployment-1#deploy-with-terraform">Deployment 1</a> for configuring Terraform variables).
 We'll see output similar to the following:</p>
-<div class="codehilite"><pre><span></span>Refreshing Terraform state in-memory prior to plan...
+<div class="codehilite"><pre><span></span><code>Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
 
@@ -1305,35 +1305,35 @@ Note: You didn&#39;t specify an &quot;-out&quot; parameter to save this plan, so
 
 
 Plan: 7 to add, 0 to change, 0 to destroy.
-</pre></div>
+</code></pre></div>
 
 
 <p>We should see that Terraform intends to add 7 new resources, some of which are for the Guestbook deployment and some of which are for the Redis deployment.</p>
 <hr />
 <h3 id="part-4-terraform-apply">Part 4: Terraform Apply<a class="headerlink" href="#part-4-terraform-apply" title="Permanent link">#</a></h3>
 <p>Run <code>terraform apply</code>, and we should see output similar to the following:</p>
-<div class="codehilite"><pre><span></span>data.template_file.redis: Refreshing state...
-layer0_deploy.redis-dpl: Creating...
+<div class="codehilite"><pre><span></span><code><span class="k">data</span><span class="p">.</span><span class="n">template_file</span><span class="p">.</span><span class="n">redis</span><span class="p">:</span> <span class="n">Refreshing</span> <span class="k">state</span><span class="p">...</span>
+<span class="n">layer0_deploy</span><span class="p">.</span><span class="n">redis</span><span class="o">-</span><span class="n">dpl</span><span class="p">:</span> <span class="n">Creating</span><span class="p">...</span>
 
-...
-...
-...
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="p">...</span>
 
-layer0_service.guestbook-svc: Creation complete
+<span class="n">layer0_service</span><span class="p">.</span><span class="n">guestbook</span><span class="o">-</span><span class="n">svc</span><span class="p">:</span> <span class="n">Creation</span> <span class="n">complete</span>
 
-Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+<span class="n">Apply</span> <span class="n">complete</span><span class="o">!</span> <span class="n">Resources</span><span class="p">:</span> <span class="mi">7</span> <span class="n">added</span><span class="p">,</span> <span class="mi">0</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">destroyed</span><span class="p">.</span>
 
-The state of your infrastructure has been saved to the path
-below. This state is required to modify and destroy your
-infrastructure, so keep it safe. To inspect the complete state
-use the `terraform show` command.
+<span class="n">The</span> <span class="k">state</span> <span class="k">of</span> <span class="n">your</span> <span class="n">infrastructure</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">to</span> <span class="n">the</span> <span class="n">path</span>
+<span class="n">below</span><span class="p">.</span> <span class="n">This</span> <span class="k">state</span> <span class="k">is</span> <span class="n">required</span> <span class="k">to</span> <span class="k">modify</span> <span class="k">and</span> <span class="k">destroy</span> <span class="n">your</span>
+<span class="n">infrastructure</span><span class="p">,</span> <span class="n">so</span> <span class="n">keep</span> <span class="n">it</span> <span class="n">safe</span><span class="p">.</span> <span class="k">To</span> <span class="n">inspect</span> <span class="n">the</span> <span class="n">complete</span> <span class="k">state</span>
+<span class="n">use</span> <span class="n">the</span> <span class="o">`</span><span class="n">terraform</span> <span class="k">show</span><span class="o">`</span> <span class="n">command</span><span class="p">.</span>
 
-State path: terraform.tfstate
+<span class="k">State</span> <span class="n">path</span><span class="p">:</span> <span class="n">terraform</span><span class="p">.</span><span class="n">tfstate</span>
 
-Outputs:
+<span class="n">Outputs</span><span class="p">:</span>
 
-guestbook_url = &lt;http endpoint for the sample application&gt;
-</pre></div>
+<span class="n">guestbook_url</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">http</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">application</span><span class="o">&gt;</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -1423,7 +1423,7 @@ Execute the following command (in the same directory):</p>
     
       <script src="../../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../../.."}})</script>
       
     
     
