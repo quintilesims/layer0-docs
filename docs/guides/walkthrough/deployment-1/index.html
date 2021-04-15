@@ -945,7 +945,6 @@ At the command prompt, execute the following:</p>
 <span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
 </code></pre></div>
 
-
 <p>We can inspect our environments in a couple of different ways:</p>
 <ul>
 <li><code>l0 environment list</code> will give us a brief summary of all environments:</li>
@@ -955,14 +954,12 @@ At the command prompt, execute the following:</p>
 <span class="err">demoenvd4e17    demo-env          linux</span>
 </code></pre></div>
 
-
 <ul>
 <li><code>l0 environment get demo-env</code> will show us more information about the <strong>demo-env</strong> environment we just created:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="err">ENVIRONMENT ID  ENVIRONMENT NAME  OS     CLUSTER COUNT  INSTANCE SIZE  LINKS</span>
 <span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
 </code></pre></div>
-
 
 <ul>
 <li><code>l0 environment get \*</code> illustrates wildcard matching (you could also have used <code>demo*</code> in the above command), and it will return detailed information for <em>each</em> environment, not just one - it's like a detailed <code>list</code>:</li>
@@ -971,7 +968,6 @@ At the command prompt, execute the following:</p>
 <span class="err">api             api               linux  2              t2.small</span>
 <span class="err">demoenvd4e17    demo-env          linux  0              m3.medium</span>
 </code></pre></div>
-
 
 <hr />
 <h3 id="part-2-create-the-load-balancer">Part 2: Create the Load Balancer<a class="headerlink" href="#part-2-create-the-load-balancer" title="Permanent link">#</a></h3>
@@ -989,7 +985,6 @@ At the command prompt, execute the following:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE  PORTS       PUBLIC  URL  IDLE TIMEOUT</span>
 <span class="err">guestboc8d07     guestbook-lb       demo-env              80:80/HTTP  true         60</span>
 </code></pre></div>
-
 
 <p>The following is a summary of the arguments passed in the above command:</p>
 <ul>
@@ -1023,7 +1018,6 @@ At the command prompt, execute the following:</p>
 <span class="err">guestbook-dpl.1  guestbook-dpl  1</span>
 </code></pre></div>
 
-
 <p>The following is a summary of the arguments passed in the above command:</p>
 <ul>
 <li><code>deploy create</code>: creates a new deployment and allows you to specify an ECS task definition</li>
@@ -1055,7 +1049,6 @@ The service will execute the Docker containers which have been described in the 
 <span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1</span>
 </code></pre></div>
 
-
 <p>The following is a summary of the arguments passed in the above command:</p>
 <ul>
 <li><code>service create</code>: creates a new service</li>
@@ -1079,18 +1072,15 @@ We should see an asterisk (*) next to the name of the <strong>guestbook-dpl:1</s
 <span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1</span>
 </code></pre></div>
 
-
 <p>In the next phase of deployment, if we execute the <code>service get</code> command again, we will see <strong>(1)</strong> in the <strong>Scale</strong> column; this indicates that 1 copy of the service is transitioning to an active state:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
 <span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1*  0/1 (1)</span>
 </code></pre></div>
 
-
 <p>In the final phase of deployment, we will see <strong>1/1</strong> in the <strong>Scale</strong> column; this indicates that the service is running 1 copy:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
 <span class="err">guestbo9364b  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:1   1/1</span>
 </code></pre></div>
-
 
 <hr />
 <h3 id="get-the-applications-url">Get the Application's URL<a class="headerlink" href="#get-the-applications-url" title="Permanent link">#</a></h3>
@@ -1101,7 +1091,6 @@ We should see an asterisk (*) next to the name of the <strong>guestbook-dpl:1</s
 <div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE        PORTS       PUBLIC  URL    IDLE  TIMEOUT</span>
 <span class="err">guestboc8d07     guestbook-lb       demo-env     guestbook-svc  80:80/HTTP  true    &lt;url&gt;  60</span>
 </code></pre></div>
-
 
 <p>Copy the value shown in the <strong>URL</strong> column and paste it into a web browser.
 The guestbook application will appear (once the service has completely finished deploying).</p>
@@ -1114,7 +1103,6 @@ The guestbook application will appear (once the service has completely finished 
 2018/11/05 19:11:46 Using memory backend
 2018/11/05 19:11:46 Listening on :80
 </code></pre></div>
-
 
 <hr />
 <h3 id="cleanup-cli">Cleanup CLI<a class="headerlink" href="#cleanup-cli" title="Permanent link">#</a></h3>
@@ -1175,7 +1163,6 @@ When we began the CLI deployment, our first step was to create an environment:</
 <span class="err">}</span>
 </code></pre></div>
 
-
 <p>We've bundled up the heart of the Guestbook deployment (load balancer, deploy, service, etc.) into a <a href="https://www.terraform.io/docs/modules/usage.html">Terraform module</a>.
 To use it, we declare a <code>module</code> block and pass in the source of the module as well as any configuration or variables that the module needs.</p>
 <div class="codehilite"><pre><span></span><code># walkthrough/deployment-1/main.tf
@@ -1186,7 +1173,6 @@ module &quot;guestbook&quot; {
 }
 </code></pre></div>
 
-
 <p>You can see that we pass in the ID of the environment we create.
 All variables declared in this block are passed to the module, so the next file we should look at is <code>variables.tf</code> inside of the module to get an idea of what the module is expecting.</p>
 <p>There are a lot of variables here, but only one of them doesn't have a default value.</p>
@@ -1196,7 +1182,6 @@ All variables declared in this block are passed to the module, so the next file 
     <span class="n">description</span> <span class="o">=</span> <span class="ss">&quot;id of the layer0 environment in which to create resources&quot;</span>
 <span class="err">}</span>
 </code></pre></div>
-
 
 <p>You'll notice that this is the variable that we're passing in.
 For this particular deployment of the Guestbook, all of the default options are fine.
@@ -1216,7 +1201,6 @@ resource &quot;layer0_load_balancer&quot; &quot;guestbook-lb&quot; {
 
 ...
 </code></pre></div>
-
 
 <p>You can follow <a href="/reference/terraform-plugin/">this link</a> to learn more about Layer0 resources in Terraform.</p>
 <hr />
@@ -1255,7 +1239,6 @@ At the command prompt, execute the following command:</p>
 <span class="n">commands</span> <span class="n">will</span> <span class="n">detect</span> <span class="n">it</span> <span class="k">and</span> <span class="n">remind</span> <span class="n">you</span> <span class="k">to</span> <span class="k">do</span> <span class="n">so</span> <span class="k">if</span> <span class="n">necessary</span><span class="p">.</span>
 </code></pre></div>
 
-
 <hr />
 <h3 id="part-2-terraform-plan">Part 2: Terraform Plan<a class="headerlink" href="#part-2-terraform-plan" title="Permanent link">#</a></h3>
 <p>Before we actually create/update/delete any resources, it's a good idea to find out what Terraform intends to do.</p>
@@ -1266,7 +1249,6 @@ At the command prompt, execute the following command:</p>
 <span class="n">var</span><span class="p">.</span><span class="n">token</span>
     <span class="n">Enter</span> <span class="n">a</span> <span class="n">value</span><span class="p">:</span>
 </code></pre></div>
-
 
 <p>You can find these values by running <code>l0-setup endpoint &lt;your layer0 prefix&gt;</code>.</p>
 <div class="admonition note">
@@ -1332,7 +1314,6 @@ Terraform will perform the following actions:
 Plan: 4 to add, 0 to change, 0 to destroy.
 </code></pre></div>
 
-
 <p>This shows you that Terraform intends to create a deploy, an environment, a load balancer, and a service, all through Layer0.</p>
 <p>If you've gone through this deployment using the <a href="#deploy-with-layer0-cli">Layer0 CLI</a>, you may notice that these resources appear out of order - that's fine. Terraform presents these resources in alphabetical order, but underneath, it knows the correct order in which to create them.</p>
 <p>Once we're satisfied that Terraform will do what we want it to do, we can move on to actually making these things exist!</p>
@@ -1359,7 +1340,6 @@ Plan: 4 to add, 0 to change, 0 to destroy.
 
 <span class="n">guestbook_url</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">http</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">application</span><span class="o">&gt;</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>

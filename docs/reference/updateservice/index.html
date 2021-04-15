@@ -716,12 +716,10 @@
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy create taskDefPath deployName</span>
 </code></pre></div>
 
-
 <p><code>taskDefPath</code> is the path to the ECS Task Definition. Note that if <code>deployName</code> already exists, this step will create a new version of that Deploy.</p>
 <p>Use <a href="cli/#service-update">l0 service update</a> to update the existing service:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service update serviceName deployName[:deployVersion]</span>
 </code></pre></div>
-
 
 <p>By default, the service name you specify in this command will refer to the latest version of <code>deployName</code>. You can optionally specify a specific version of the deploy, as shown above.</p>
 <h2 id="method-2-create-a-new-deploy-and-service-using-the-same-loadbalancer">Method 2: Create a new Deploy and Service using the same Loadbalancer<a class="headerlink" href="#method-2-create-a-new-deploy-and-service-using-the-same-loadbalancer" title="Permanent link">#</a></h2>
@@ -732,18 +730,15 @@
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy create taskDefPath deployName</span>
 </code></pre></div>
 
-
 <p><code>taskDefPath</code> is the path to the ECS Task Definition. Note that if <code>deployName</code> already exists, this step will create a new version of that Deploy.</p>
 <p>Use <a href="cli/#service-create">l0 service create</a> to create a new service that uses <code>deployName</code> behind an existing load balancer named <code>loadBalancerName</code></p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service create --loadbalancer [environmentName:]loadBalancerName environmentName serviceName deployName[:deployVersion]</span>
 </code></pre></div>
 
-
 <p>By default, the service name you specify in this command will refer to the latest version of <code>deployName</code>. You can optionally specify a specific version of the deploy, as shown above. You can also optionally specify the name of the environment, <code>environmentName</code> where the load balancer exists. </p>
 <p>Check to make sure that the new service is working as expected. If it is, and you do not want to keep the old service, delete the old service: </p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service delete service</span>
 </code></pre></div>
-
 
 <h2 id="method-3-create-a-new-deploy-loadbalancer-and-service">Method 3: Create a new Deploy, Loadbalancer and Service<a class="headerlink" href="#method-3-create-a-new-deploy-loadbalancer-and-service" title="Permanent link">#</a></h2>
 <p>The final method of updating a Layer0 service is to create an entirely new Deploy, Load Balancer and Service. This method gives you complete control over both the new and the old Service, and allows you to perform true A/B testing by routing traffic to individual Services.</p>
@@ -753,12 +748,10 @@
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy create taskDefPath deployName</span>
 </code></pre></div>
 
-
 <p><code>taskDefPath</code> is the path to the ECS Task Definition. Note that if <code>deployName</code> already exists, this step will create a new version of that Deploy.</p>
 <p>Use <a href="cli/#loadbalancer-create">l0 loadbalancer create</a> to create a new Load Balancer:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer create --port port environmentName loadBalancerName deployName</span>
 </code></pre></div>
-
 
 <ul>
 <li><code>port</code> is the port configuration for the listener of the Load Balancer. Valid pattern is <code>hostPort:containerPort/protocol</code>. Multiple ports can be specified using <code>--port port1 --port port2 ...</code>.<ul>
@@ -775,7 +768,6 @@
 <p>Use <a href="cli/#service-create">l0 service create</a> to create a new Service using the Load Balancer you just created: </p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service create --loadbalancer loadBalancerName environmentName serviceName deployName</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>

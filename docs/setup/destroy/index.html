@@ -699,19 +699,16 @@ List all environments with:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment list</span>
 </code></pre></div>
 
-
 <p>For each environment listed in the previous step, with the exception of the environment named <code>api</code>, 
 issue the following command (replacing <code>&lt;environment_name&gt;</code> with the name of the environment to delete):</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment delete --wait &lt;environment_name&gt;</span>
 </code></pre></div>
-
 
 <h2 id="part-2-destroy-the-layer0-instance">Part 2: Destroy the Layer0 Instance<a class="headerlink" href="#part-2-destroy-the-layer0-instance" title="Permanent link">#</a></h2>
 <p>Once all environments have been deleted, the Layer0 instance can be deleted using the <code>l0-setup</code> tool. 
 Run the following command (replacing <code>&lt;instance_name&gt;</code> with the name of the Layer0 instance):</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0-setup destroy &lt;instance_name&gt;</span>
 </code></pre></div>
-
 
 <p>The <code>destroy</code> command is idempotent; if it fails, it is safe to re-attempt multiple times. </p>
 <div class="admonition note">

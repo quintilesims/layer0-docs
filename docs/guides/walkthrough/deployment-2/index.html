@@ -971,7 +971,6 @@ At the command prompt, execute the following:</p>
 <span class="err">redislb16ae6     redis-lb           demo-env              6378:6379:TCP  false        60</span>
 </code></pre></div>
 
-
 <p>The following is a summary of the arguments passed in the above command:</p>
 <ul>
 <li><code>loadbalancer create</code>: creates a new load balancer</li>
@@ -991,7 +990,6 @@ At the command prompt, execute the following:</p>
 <span class="err">redis-dpl.1  redis-dpl    1</span>
 </code></pre></div>
 
-
 <p>The following is a summary of the arguments passed in the above command:</p>
 <ul>
 <li><code>deploy create</code>: creates a new Layer0 Deploy and allows you to specify an ECS task definition</li>
@@ -1007,7 +1005,6 @@ At the command prompt, execute the following:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME  ENVIRONMENT  LOADBALANCER  DEPLOYMENTS  SCALE</span>
 <span class="err">redislb16ae6  redis-svc     demo-env     redis-lb      redis-dpl:1  0/1</span>
 </code></pre></div>
-
 
 <p>The following is a summary of the arguments passed in the above commands:</p>
 <ul>
@@ -1031,7 +1028,6 @@ At the command prompt, execute the following:</p>
 <span class="c">1:M 05 Apr 23:29:47.333 * The server is now ready to accept connections on port 6379</span>
 </code></pre></div>
 
-
 <p>Now we just need to teach the Guestbook application how to talk with our Redis service.</p>
 <hr />
 <h3 id="part-5-update-the-guestbook-deploy">Part 5: Update the Guestbook Deploy<a class="headerlink" href="#part-5-update-the-guestbook-deploy" title="Permanent link">#</a></h3>
@@ -1051,12 +1047,10 @@ This file is very similar to but not the same as the one in <code>deployment-1/<
     <span class="err">...</span>
 </code></pre></div>
 
-
 <p>The <code>"GUESTBOOK_BACKEND_CONFIG"</code> variable is what will point the Guestbook application towards the Redis server.
 The <code>&lt;redis host and port here&gt;</code> section needs to be replaced and populated in the following format:</p>
 <div class="codehilite"><pre><span></span><code><span class="s2">&quot;value&quot;</span><span class="err">:</span> <span class="s2">&quot;ADDRESS_OF_REDIS_SERVER:PORT_THE_SERVER_IS_SERVING_ON&quot;</span>
 </code></pre></div>
-
 
 <p>We already know that Redis is serving on port 6379, so let's go find the server's address.
 Remember, it lives behind a load balancer that we made, so run the following command:</p>
@@ -1065,7 +1059,6 @@ Remember, it lives behind a load balancer that we made, so run the following com
 <div class="codehilite"><pre><span></span><code><span class="err">LOADBALANCER ID  LOADBALANCER NAME  ENVIRONMENT  SERVICE    PORTS          PUBLIC  URL                                          IDLE  TIMEOUT</span>
 <span class="err">redislb16ae6     redis-lb           demo-env     redis-svc  6379:6379/TCP  false   internal-l0-&lt;yadda-yadda&gt;.elb.amazonaws.com  60</span>
 </code></pre></div>
-
 
 <p>Copy that <code>URL</code> value, replace <code>&lt;redis host and port here&gt;</code> with the <code>URL</code> value in <code>Guestbook.Dockerrun.aws.json</code>, append <code>:6379</code> to it, and save the file.
 It should look something like the following:</p>
@@ -1079,14 +1072,12 @@ It should look something like the following:</p>
     <span class="err">...</span>
 </code></pre></div>
 
-
 <p>Now, we can create an updated deploy:</p>
 <p><code>l0 deploy create Guestbook.Dockerrun.aws.json guestbook-dpl</code></p>
 <p>We should see output like the following:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">DEPLOY ID        DEPLOY NAME    VERSION</span>
 <span class="err">guestbook-dpl.2  guestbook-dpl  2</span>
 </code></pre></div>
-
 
 <hr />
 <h3 id="part-6-update-the-guestbook-service">Part 6: Update the Guestbook Service<a class="headerlink" href="#part-6-update-the-guestbook-service" title="Permanent link">#</a></h3>
@@ -1099,13 +1090,11 @@ Now we just need to apply the new Guestbook deploy to the running Guestbook serv
 <span class="err">                                                        guestbook-dpl:1</span>
 </code></pre></div>
 
-
 <p><em>above: <code>guestbook-dpl:2</code> is in a transitional state</em></p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE</span>
 <span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  2/1</span>
 <span class="err">                                                        guestbook-dpl:1</span>
 </code></pre></div>
-
 
 <p><em>above: both versions of the deployment are running at scale</em></p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS       SCALE</span>
@@ -1113,12 +1102,10 @@ Now we just need to apply the new Guestbook deploy to the running Guestbook serv
 <span class="err">                                                        guestbook-dpl:1*</span>
 </code></pre></div>
 
-
 <p><em>above: <code>guestbook-dpl:1</code> is in a transitional state</em></p>
 <div class="codehilite"><pre><span></span><code><span class="err">SERVICE ID    SERVICE NAME   ENVIRONMENT  LOADBALANCER  DEPLOYMENTS      SCALE</span>
 <span class="err">guestbo5fadd  guestbook-svc  demo-env     guestbook-lb  guestbook-dpl:2  1/1</span>
 </code></pre></div>
-
 
 <p><em>above: <code>guestbook-dpl:1</code> has been removed, and only <code>guestbook-dpl:2</code> remains</em></p>
 <hr />
@@ -1221,7 +1208,6 @@ At the command prompt, execute the following command:</p>
 <span class="n">commands</span> <span class="n">will</span> <span class="n">detect</span> <span class="n">it</span> <span class="k">and</span> <span class="n">remind</span> <span class="n">you</span> <span class="k">to</span> <span class="k">do</span> <span class="n">so</span> <span class="k">if</span> <span class="n">necessary</span><span class="p">.</span>
 </code></pre></div>
 
-
 <hr />
 <h3 id="part-3-terraform-plan">Part 3: Terraform Plan<a class="headerlink" href="#part-3-terraform-plan" title="Permanent link">#</a></h3>
 <p>It's always a good idea to find out what Terraform intends to do, so let's do that:</p>
@@ -1307,7 +1293,6 @@ Note: You didn&#39;t specify an &quot;-out&quot; parameter to save this plan, so
 Plan: 7 to add, 0 to change, 0 to destroy.
 </code></pre></div>
 
-
 <p>We should see that Terraform intends to add 7 new resources, some of which are for the Guestbook deployment and some of which are for the Redis deployment.</p>
 <hr />
 <h3 id="part-4-terraform-apply">Part 4: Terraform Apply<a class="headerlink" href="#part-4-terraform-apply" title="Permanent link">#</a></h3>
@@ -1334,7 +1319,6 @@ Plan: 7 to add, 0 to change, 0 to destroy.
 
 <span class="n">guestbook_url</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">http</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sample</span> <span class="n">application</span><span class="o">&gt;</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>

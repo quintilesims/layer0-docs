@@ -3332,7 +3332,6 @@
 <div class="codehilite"><pre><span></span><code><span class="n">l0</span> <span class="p">[</span><span class="n">global</span> <span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="n">subcommand</span> <span class="p">[</span><span class="n">subcommand</span> <span class="n">options</span><span class="p">]</span> <span class="n">params</span>
 </code></pre></div>
 
-
 <h4 id="global-options_1">Global options<a class="headerlink" href="#global-options_1" title="Permanent link">#</a></h4>
 <ul>
 <li><code>-o [text|json], --output [text|json]</code> - Specify the format of Layer0 outputs. By default, Layer0 outputs unformatted text; by issuing the <code>--output json</code> option, you can force <code>l0</code> to output JSON-formatted text.</li>
@@ -3349,13 +3348,11 @@
 <div class="codehilite"><pre><span></span><code><span class="err">l0 admin debug</span>
 </code></pre></div>
 
-
 <h3 id="admin-sql">admin sql<a class="headerlink" href="#admin-sql" title="Permanent link">#</a></h3>
 <p>Use the <code>sql</code> subcommand to initialize the Layer0 API database.</p>
 <h4 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 admin sql</span>
 </code></pre></div>
-
 
 <h4 id="additional-information">Additional information<a class="headerlink" href="#additional-information" title="Permanent link">#</a></h4>
 <p>The <code>sql</code> subcommand is automatically executed during the Layer0 installation process; we recommend that you do not use this subcommand unless specifically directed to do so.</p>
@@ -3364,7 +3361,6 @@
 <h4 id="usage_3">Usage<a class="headerlink" href="#usage_3" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 admin version </span>
 </code></pre></div>
-
 
 <hr />
 <h2 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">#</a></h2>
@@ -3375,7 +3371,6 @@ The <code>deploy</code> command is used to manage Layer0 environments. This comm
 <h4 id="usage_4">Usage<a class="headerlink" href="#usage_4" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy create taskDefPath deployName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters">Required parameters<a class="headerlink" href="#required-parameters" title="Permanent link">#</a></h4>
 <ul>
@@ -3401,13 +3396,11 @@ The added <code>logConfiguration</code> section uses the following template:</p>
 <span class="err">}</span>
 </code></pre></div>
 
-
 <h3 id="deploy-delete">deploy delete<a class="headerlink" href="#deploy-delete" title="Permanent link">#</a></h3>
 <p>Use the <code>delete</code> subcommand to delete a version of a Layer0 deploy.</p>
 <h4 id="usage_5">Usage<a class="headerlink" href="#usage_5" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy delete deployName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_1">Required parameters<a class="headerlink" href="#required-parameters_1" title="Permanent link">#</a></h4>
 <ul>
@@ -3418,7 +3411,6 @@ The added <code>logConfiguration</code> section uses the following template:</p>
 <h4 id="usage_6">Usage<a class="headerlink" href="#usage_6" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy get deployName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_2">Required parameters<a class="headerlink" href="#required-parameters_2" title="Permanent link">#</a></h4>
 <ul>
@@ -3432,7 +3424,6 @@ The added <code>logConfiguration</code> section uses the following template:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 deploy list</span>
 </code></pre></div>
 
-
 <hr />
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">#</a></h2>
 <p>Layer0 environments allow you to isolate services and load balancers for specific applications.
@@ -3443,7 +3434,6 @@ The <code>environment</code> command is used to manage Layer0 environments. This
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment create [--size size | --min-count mincount | </span>
 <span class="err">    --user-data path | --os os | --ami amiID] environmentName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_3">Required parameters<a class="headerlink" href="#required-parameters_3" title="Permanent link">#</a></h4>
 <ul>
@@ -3476,7 +3466,6 @@ aws s3 cp s3://<span class="o">{{</span> .S3Bucket <span class="o">}}</span>/boo
 docker pull amazon/amazon-ecs-agent:latest
 start ecs
 </code></pre></div>
-
 
 <p><strong>Windows Environments</strong>: The default Layer0 user data template is:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="n">powershell</span><span class="p">&gt;</span>
@@ -3538,7 +3527,6 @@ start ecs
 <span class="p">&lt;</span><span class="n">persist</span><span class="p">&gt;</span><span class="n">true</span><span class="p">&lt;/</span><span class="n">persist</span><span class="p">&gt;</span>
 </code></pre></div>
 
-
 <div class="admonition note">
 <p class="admonition-title">Note: Windows Environments</p>
 <p>Windows environments have a few quirks and idiosyncracies to be aware of:
@@ -3551,7 +3539,6 @@ start ecs
 <h4 id="usage_9">Usage<a class="headerlink" href="#usage_9" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment delete [--wait] environmentName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_4">Required parameters<a class="headerlink" href="#required-parameters_4" title="Permanent link">#</a></h4>
 <ul>
@@ -3569,7 +3556,6 @@ start ecs
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment get environmentName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_5">Required parameters<a class="headerlink" href="#required-parameters_5" title="Permanent link">#</a></h4>
 <ul>
 <li><code>environmentName</code> - The name of the Layer0 environment for which you want to view additional information.</li>
@@ -3582,13 +3568,11 @@ start ecs
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment list</span>
 </code></pre></div>
 
-
 <h3 id="environment-setmincount">environment setmincount<a class="headerlink" href="#environment-setmincount" title="Permanent link">#</a></h3>
 <p>Use the <code>setmincount</code> subcommand to set the minimum number of EC2 instances allowed the environment's autoscaling group.</p>
 <h4 id="usage_12">Usage<a class="headerlink" href="#usage_12" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment setmincount environmentName count</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_6">Required parameters<a class="headerlink" href="#required-parameters_6" title="Permanent link">#</a></h4>
 <ul>
@@ -3604,7 +3588,6 @@ This command is idempotent; it will succeed even if the two specified environmen
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment link sourceEnvironmentName destEnvironmentName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_7">Required parameters<a class="headerlink" href="#required-parameters_7" title="Permanent link">#</a></h4>
 <ul>
 <li><code>sourceEnvironmentName</code> - The name of the source environment to link.</li>
@@ -3616,7 +3599,6 @@ This command is idempotent; it will succeed even if the link does not exist.</p>
 <h4 id="usage_14">Usage<a class="headerlink" href="#usage_14" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 environment unlink sourceEnvironmentName destEnvironmentName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_8">Required parameters<a class="headerlink" href="#required-parameters_8" title="Permanent link">#</a></h4>
 <ul>
@@ -3634,7 +3616,6 @@ The <code>job</code> command is used with the following subcommands: <a href="#j
 <div class="codehilite"><pre><span></span><code><span class="err">l0 job logs [--start MM/DD HH:MM | --end MM/DD HH:MM | --tail=N] jobName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_9">Required parameters<a class="headerlink" href="#required-parameters_9" title="Permanent link">#</a></h4>
 <ul>
 <li><code>jobName</code> - The name of the Layer0 job for which you want to view logs.</li>
@@ -3651,7 +3632,6 @@ The <code>job</code> command is used with the following subcommands: <a href="#j
 <div class="codehilite"><pre><span></span><code><span class="err">l0 job delete jobName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_10">Required parameters<a class="headerlink" href="#required-parameters_10" title="Permanent link">#</a></h4>
 <ul>
 <li><code>jobName</code> - The name of the job that you want to delete.</li>
@@ -3661,7 +3641,6 @@ The <code>job</code> command is used with the following subcommands: <a href="#j
 <h4 id="usage_17">Usage<a class="headerlink" href="#usage_17" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 job get jobName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_11">Required parameters<a class="headerlink" href="#required-parameters_11" title="Permanent link">#</a></h4>
 <ul>
@@ -3675,7 +3654,6 @@ The <code>job</code> command is used with the following subcommands: <a href="#j
 <div class="codehilite"><pre><span></span><code><span class="err">l0 job list</span>
 </code></pre></div>
 
-
 <hr />
 <h2 id="load-balancer">Load Balancer<a class="headerlink" href="#load-balancer" title="Permanent link">#</a></h2>
 <p>A load balancer is a component of a Layer0 environment. Load balancers listen for traffic on certain ports, and then forward that traffic to Layer0 <a href="#service">services</a>. The <code>loadbalancer</code> command is used with the following subcommands: <a href="#loadbalancer-create">create</a>, <a href="#loadbalancer-delete">delete</a>, <a href="#loadbalancer-addport">addport</a>, <a href="#loadbalancer-dropport">dropport</a>, <a href="#loadbalancer-get">get</a>, <a href="#loadbalancer-list">list</a>, <a href="#loadbalancer-healthcheck">healthcheck</a>, and <a href="#loadbalancer-idletimeout">idletimeout</a>.</p>
@@ -3688,7 +3666,6 @@ The <code>job</code> command is used with the following subcommands: <a href="#j
 <span class="err">    --healthcheck-unhealthy-threshold unhealthyThreshold | --idle-timeout idleTimeout | </span>
 <span class="err">    --disable-cross-zone] environmentName loadBalancerName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_12">Required parameters<a class="headerlink" href="#required-parameters_12" title="Permanent link">#</a></h4>
 <ul>
@@ -3730,7 +3707,6 @@ These default values together create a load balancer configured with a simple bu
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer delete [--wait] loadBalancerName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_13">Required parameters<a class="headerlink" href="#required-parameters_13" title="Permanent link">#</a></h4>
 <ul>
 <li><code>loadBalancerName</code> - The name of the load balancer that you want to delete.</li>
@@ -3748,7 +3724,6 @@ These default values together create a load balancer configured with a simple bu
 <h4 id="usage_21">Usage<a class="headerlink" href="#usage_21" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer addport [--certificate certificateName] loadBalancerName port</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_14">Required parameters<a class="headerlink" href="#required-parameters_14" title="Permanent link">#</a></h4>
 <ul>
@@ -3772,7 +3747,6 @@ These default values together create a load balancer configured with a simple bu
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer dropport loadBalancerName hostPort</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_15">Required parameters<a class="headerlink" href="#required-parameters_15" title="Permanent link">#</a></h4>
 <ul>
 <li><code>loadBalancerName</code>- The name of an existing Layer0 load balancer from which you want to remove the port configuration.</li>
@@ -3783,7 +3757,6 @@ These default values together create a load balancer configured with a simple bu
 <h4 id="usage_23">Usage<a class="headerlink" href="#usage_23" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer get [environmentName:]loadBalancerName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_16">Required parameters<a class="headerlink" href="#required-parameters_16" title="Permanent link">#</a></h4>
 <ul>
@@ -3797,7 +3770,6 @@ These default values together create a load balancer configured with a simple bu
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer list</span>
 </code></pre></div>
 
-
 <h3 id="loadbalancer-healthcheck">loadbalancer healthcheck<a class="headerlink" href="#loadbalancer-healthcheck" title="Permanent link">#</a></h3>
 <p>Use the <code>healthcheck</code> subcommand to display information about or update the configuration of a load balancer's health check.</p>
 <h4 id="usage_25">Usage<a class="headerlink" href="#usage_25" title="Permanent link">#</a></h4>
@@ -3805,7 +3777,6 @@ These default values together create a load balancer configured with a simple bu
 <span class="err">    --set-timeout timeout | --set-healthy-threshold healthyThreshold | </span>
 <span class="err">    --set-unhealthy-threshold unhealthyThreshold] loadbalancerName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_17">Required parameters<a class="headerlink" href="#required-parameters_17" title="Permanent link">#</a></h4>
 <ul>
@@ -3832,7 +3803,6 @@ These default values together create a load balancer configured with a simple bu
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer idletimeout loadbalancerName idleTimeout</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_18">Required parameters<a class="headerlink" href="#required-parameters_18" title="Permanent link">#</a></h4>
 <ul>
 <li><code>loadBalancerName</code> - The name of the existing Layer0 load balancer you are modifying.</li>
@@ -3846,7 +3816,6 @@ See the following documentation for more information: <a href="https://docs.aws.
 <h4 id="usage_27">Usage<a class="headerlink" href="#usage_27" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 loadbalancer cross-zone loadBalancerName [--enable | --disable]</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_19">Required parameters<a class="headerlink" href="#required-parameters_19" title="Permanent link">#</a></h4>
 <ul>
@@ -3873,7 +3842,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <span class="err">    --no-logs] environmentName serviceName deployName[:deployVersion]</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_20">Required parameters<a class="headerlink" href="#required-parameters_20" title="Permanent link">#</a></h4>
 <ul>
 <li><code>serviceName</code> - A name for the service that you are creating.</li>
@@ -3890,7 +3858,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <h4 id="usage_29">Usage<a class="headerlink" href="#usage_29" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service update [--no-logs] [environmentName:]serviceName deployName[:deployVersion]</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_21">Required parameters<a class="headerlink" href="#required-parameters_21" title="Permanent link">#</a></h4>
 <ul>
@@ -3909,7 +3876,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service delete [--wait] [environmentName:]serviceName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_22">Required parameters<a class="headerlink" href="#required-parameters_22" title="Permanent link">#</a></h4>
 <ul>
 <li><code>[environmentName:]serviceName</code> - The name of the Layer0 service that you want to delete. You can optionally provide the Layer0 environment (<code>environmentName</code>) of the service.</li>
@@ -3926,7 +3892,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service get [environmentName:]serviceName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_23">Required parameters<a class="headerlink" href="#required-parameters_23" title="Permanent link">#</a></h4>
 <ul>
 <li><code>[environmentName:]serviceName</code> - The name of an existing Layer0 service. You can optionally provide the Layer0 environment (<code>environmentName</code>) of the service.</li>
@@ -3937,13 +3902,11 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service get list</span>
 </code></pre></div>
 
-
 <h3 id="service-logs">service logs<a class="headerlink" href="#service-logs" title="Permanent link">#</a></h3>
 <p>Use the <code>logs</code> subcommand to display the logs from a Layer0 service that is currently running.</p>
 <h4 id="usage_33">Usage<a class="headerlink" href="#usage_33" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service logs [--start MM/DD HH:MM | --end MM/DD HH:MM | --tail=N] serviceName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_24">Required parameters<a class="headerlink" href="#required-parameters_24" title="Permanent link">#</a></h4>
 <ul>
@@ -3961,7 +3924,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 service scale [environmentName:]serviceName copies</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_25">Required parameters<a class="headerlink" href="#required-parameters_25" title="Permanent link">#</a></h4>
 <ul>
 <li><code>[environmentName:]serviceName</code> - The name of the Layer0 service that you want to scale up. You can optionally provide the Layer0 environment (<code>environmentName</code>) of the service.</li>
@@ -3976,7 +3938,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <h4 id="usage_35">Usage<a class="headerlink" href="#usage_35" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 task create [--copies copies | --no-logs] environmentName taskName deployName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_26">Required parameters<a class="headerlink" href="#required-parameters_26" title="Permanent link">#</a></h4>
 <ul>
@@ -3995,7 +3956,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 task delete [environmentName:]taskName</span>
 </code></pre></div>
 
-
 <h4 id="required-parameters_27">Required parameters<a class="headerlink" href="#required-parameters_27" title="Permanent link">#</a></h4>
 <ul>
 <li><code>[environmentName:]taskName</code> - The name of the Layer0 task that you want to delete. You can optionally specify the name of the Layer0 environment that contains the task. This parameter is only required if mulitiple environments contain tasks with exactly the same name.</li>
@@ -4007,7 +3967,6 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <h4 id="usage_37">Usage<a class="headerlink" href="#usage_37" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 task get [environmentName:]taskName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_28">Required parameters<a class="headerlink" href="#required-parameters_28" title="Permanent link">#</a></h4>
 <ul>
@@ -4021,13 +3980,11 @@ Passing both flags to the <code>cross-zone</code> subcommand will return an erro
 <div class="codehilite"><pre><span></span><code><span class="err">l0 task list</span>
 </code></pre></div>
 
-
 <h3 id="task-logs">task logs<a class="headerlink" href="#task-logs" title="Permanent link">#</a></h3>
 <p>Use the <code>logs</code> subcommand to display logs for a running Layer0 task.</p>
 <h4 id="usage_39">Usage<a class="headerlink" href="#usage_39" title="Permanent link">#</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">l0 task logs [--start MM/DD HH:MM | --end MM/DD HH:MM | --tail=N] taskName</span>
 </code></pre></div>
-
 
 <h4 id="required-parameters_29">Required parameters<a class="headerlink" href="#required-parameters_29" title="Permanent link">#</a></h4>
 <ul>
