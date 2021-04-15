@@ -9,8 +9,8 @@ check-environment:
 	fi
 
 deps:
-	pip install mkdocs
-	pip install -Iv mkdocs-material==3.0.6
+	pip3 install mkdocs
+	pip3 install -Iv mkdocs-material==3.0.6
 	go get github.com/blang/expenv
 	go install github.com/blang/expenv
 

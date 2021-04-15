@@ -13,10 +13,10 @@ Layer0 is a framework that helps you deploy web applications to the cloud with m
 Ready to learn more about Layer0? See our [introduction page](intro.md) to learn about some important concepts. When you're ready to get started, take a look at the [installation page](setup/install.md) for information about setting up Layer0.
 
 ## Download
-| Download **v0.12.0** | | |
+| Download **v0.12.4** | | |
 |:-:|:-:|:-:|
 | ![Darwin](/static/icon_darwin.png) | ![Linux](/static/icon_linux.png)  | ![Windows](/static/icon_windows.png) |
-| [macOS](https://github.com/quintilesims/layer0/releases/download/v0.12.0/macOS.zip) | [Linux](https://github.com/quintilesims/layer0/releases/download/v0.12.0/Linux.zip) | [Windows](https://github.com/quintilesims/layer0/releases/download/v0.12.0/Windows.zip) |
+| [macOS](https://github.com/quintilesims/layer0/releases/download/v0.12.4/macOS.zip) | [Linux](https://github.com/quintilesims/layer0/releases/download/v0.12.4/Linux.zip) | [Windows](https://github.com/quintilesims/layer0/releases/download/v0.12.4/Windows.zip) |
 
 
 ## Contact Us
